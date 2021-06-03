@@ -21,14 +21,14 @@ class DataTests: XCTestCase {
         XCTAssertEqual(sut.httpClientSpy.data, addAccountModel.toData(), "Data from to httpClient is wrong")
     }
     
-    func test_add_should_complete_with_error_if_client_fails() throws {
+    func test_add_should_complete_with_error_if_client_completes_with_error() throws {
         let sut = makeSut()
         let addAccountModel = makeAddAccountModel()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         sut.principal.add(addAccountModel: addAccountModel) { result in
             switch result {
                 case .failure(let error): XCTAssertEqual(error, .unexpected, "Error send is wrong")
-            case .success(_): XCTFail("Expected error receive \(result) insted")
+            case .success(_): XCTFail("Expected error received \(result) insted")
                 
             }
             
@@ -36,6 +36,25 @@ class DataTests: XCTestCase {
         }
         //Aqui eu incitei a ocorrência de erro por que o ponto principal do teste é testar o erro, caso eu chamasse o completion dentro do método post de HttpClientSpy, futuramente deveria decidir o que responder já que haverá casos de sucesso também, então o método completionWithError foi criado dentro de HttpClientSpy para forçar a resposta de erro para a qual queremos no teste que é DomainError.unexpected. Lembrando que .unexpected está sendo definido dentro do método add de RemoteAddAccount
         sut.httpClientSpy.completionWithError(.noConnectivity)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_add_should_complete_with_account_if_client_completes_with_data() throws {
+        let sut = makeSut()
+        let addAccountModel = makeAddAccountModel()
+        let expectedAccount = makeAccountModel()
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        sut.principal.add(addAccountModel: addAccountModel) { result in
+            switch result {
+                case .failure: XCTFail("Expected success received \(result) insted")
+            case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedAccount, "Error send is wrong")
+                
+            }
+            
+            exp.fulfill()
+        }
+        //Aqui eu também incito a resposta da mesma forma que o teste acima, mas chamando o completionWithData para responder com Data já que esse teste valida a criação de um usuário
+        sut.httpClientSpy.completionWithData(expectedAccount.toData()!)
         wait(for: [exp], timeout: 1)
     }
     
@@ -54,6 +73,10 @@ extension DataTests {
         return AddAccountModel(name: "anyName", email: "anyEmail", password: "anyPassword", passwordConfirmation: "anyPassword")
     }
     
+    func makeAccountModel () -> AccountModel {
+        return AccountModel(id: "someId", name: "anyName", email: "anyEmail", password: "anyPassword")
+    }
+    
     class HttpClientSpy: HttpPostClient {
         var url: URL?
         var data: Data?
@@ -69,6 +92,10 @@ extension DataTests {
         
         func completionWithError(_ error: HttpError){
             completion?(.failure(error))
+        }
+        
+        func completionWithData(_ data: Data){
+            completion?(.success(data))
         }
     }
 }
