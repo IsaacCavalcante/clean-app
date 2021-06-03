@@ -29,6 +29,10 @@ class DataTests: XCTestCase {
         XCTAssertEqual(httpClientSpy.url, url, "Url send to httpClient is wrong")
     }
     
+    
+}
+
+extension DataTests {
     class HttpClientSpy: HttpPostClient {
         var url: URL?
         
@@ -36,6 +40,4 @@ class DataTests: XCTestCase {
             self.url = url
         }
     }
-
-
 }
