@@ -27,7 +27,7 @@ class DataTests: XCTestCase {
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         sut.principal.add(addAccountModel: addAccountModel) { result in
             switch result {
-                case .failure(let error): XCTAssertEqual(error, .unexpected, "Error send is wrong")
+            case .failure(let error): XCTAssertEqual(error, .unexpected, "Error sent is wrong")
             case .success(_): XCTFail("Expected error received \(result) insted")
                 
             }
@@ -39,14 +39,14 @@ class DataTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_add_should_complete_with_account_if_client_completes_with_data() throws {
+    func test_add_should_complete_with_account_if_client_completes_with_valid_data() throws {
         let sut = makeSut()
         let addAccountModel = makeAddAccountModel()
         let expectedAccount = makeAccountModel()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         sut.principal.add(addAccountModel: addAccountModel) { result in
             switch result {
-                case .failure: XCTFail("Expected success received \(result) insted")
+            case .failure: XCTFail("Expected success received \(result) insted")
             case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedAccount, "Error send is wrong")
                 
             }
@@ -55,6 +55,22 @@ class DataTests: XCTestCase {
         }
         //Aqui eu também incito a resposta da mesma forma que o teste acima, mas chamando o completionWithData para responder com Data já que esse teste valida a criação de um usuário
         sut.httpClientSpy.completionWithData(expectedAccount.toData()!)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_add_should_complete_with_error_if_client_completes_with_invalid_data() throws {
+        let sut = makeSut()
+        let addAccountModel = makeAddAccountModel()
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        sut.principal.add(addAccountModel: addAccountModel) { result in
+            switch result {
+            case .failure(let error): XCTAssertEqual(error, .invalidData, "Error sent is wrong")
+            case .success(_): XCTFail("Expected error received \(result) insted")
+            }
+            
+            exp.fulfill()
+        }
+        sut.httpClientSpy.completionWithData(Data("invalidData".utf8))
         wait(for: [exp], timeout: 1)
     }
     
