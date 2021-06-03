@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		940FAFF72669483100DE8148 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FAFF62669483100DE8148 /* Model.swift */; };
 		947336F926690624008F47D4 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947336F826690624008F47D4 /* AddAccount.swift */; };
 		947336FB266909C1008F47D4 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947336FA266909C1008F47D4 /* AccountModel.swift */; };
 		9473370A2669118D008F47D4 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		940FAFF62669483100DE8148 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		947336F026690583008F47D4 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		947336F326690583008F47D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947336F826690624008F47D4 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				947336F326690583008F47D4 /* Info.plist */,
 				947336F826690624008F47D4 /* AddAccount.swift */,
 				947336FA266909C1008F47D4 /* AccountModel.swift */,
+				940FAFF62669483100DE8148 /* Model.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				940FAFF72669483100DE8148 /* Model.swift in Sources */,
 				947336F926690624008F47D4 /* AddAccount.swift in Sources */,
 				947336FB266909C1008F47D4 /* AccountModel.swift in Sources */,
 			);
