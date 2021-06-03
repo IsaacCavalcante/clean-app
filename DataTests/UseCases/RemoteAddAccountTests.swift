@@ -8,7 +8,9 @@ class DataTests: XCTestCase {
         let (sut, url, httpClientSpy) = makeSut()
         let addAccountModel = makeAddAccountModel()
         sut.add(addAccountModel: addAccountModel)
+        
         XCTAssertEqual(httpClientSpy.url, url, "Url send to httpClient is wrong")
+        XCTAssertEqual(httpClientSpy.callsCounter, 1, "post method from HttpClient called more than one time")
     }
     
     func test_add_should_call_httpClient_with_correct_data() throws {
@@ -37,10 +39,12 @@ extension DataTests {
     class HttpClientSpy: HttpPostClient {
         var url: URL?
         var data: Data?
+        var callsCounter = 0
         
         func post(to url: URL, with data: Data?) {
             self.url = url
             self.data = data
+            self.callsCounter += 1
         }
     }
 }

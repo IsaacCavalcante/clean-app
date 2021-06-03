@@ -112,13 +112,53 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9452382D2669510D00A733DD /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				947336F826690624008F47D4 /* AddAccount.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		9452382E2669512000A733DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				947336FA266909C1008F47D4 /* AccountModel.swift */,
+				940FAFF62669483100DE8148 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9452382F2669514A00A733DD /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				940FAFF8266949F400DE8148 /* RemoteAddAccount.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		945238302669516700A733DD /* HttpClients */ = {
+			isa = PBXGroup;
+			children = (
+				940FAFFA26694A2700DE8148 /* HttpPostClient.swift */,
+			);
+			path = HttpClients;
+			sourceTree = "<group>";
+		};
+		945238312669519000A733DD /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				94733715266911DD008F47D4 /* RemoteAddAccountTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		947336F126690583008F47D4 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				947336F326690583008F47D4 /* Info.plist */,
-				947336F826690624008F47D4 /* AddAccount.swift */,
-				947336FA266909C1008F47D4 /* AccountModel.swift */,
-				940FAFF62669483100DE8148 /* Model.swift */,
+				9452382D2669510D00A733DD /* UseCases */,
+				9452382E2669512000A733DD /* Models */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -127,8 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				9473370426691156008F47D4 /* Info.plist */,
-				940FAFF8266949F400DE8148 /* RemoteAddAccount.swift */,
-				940FAFFA26694A2700DE8148 /* HttpPostClient.swift */,
+				9452382F2669514A00A733DD /* UseCases */,
+				945238302669516700A733DD /* HttpClients */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -143,7 +183,7 @@
 		94733714266911DD008F47D4 /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
-				94733715266911DD008F47D4 /* RemoteAddAccountTests.swift */,
+				945238312669519000A733DD /* UseCases */,
 				94733717266911DD008F47D4 /* Info.plist */,
 			);
 			path = DataTests;
