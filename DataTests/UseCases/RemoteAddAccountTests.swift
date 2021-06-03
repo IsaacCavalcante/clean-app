@@ -25,11 +25,16 @@ class DataTests: XCTestCase {
         let sut = makeSut()
         let addAccountModel = makeAddAccountModel()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        sut.principal.add(addAccountModel: addAccountModel) { error in
-            XCTAssertEqual(error, .unexpected, "Error send is wrong")
+        sut.principal.add(addAccountModel: addAccountModel) { result in
+            switch result {
+                case .failure(let error): XCTAssertEqual(error, .unexpected, "Error send is wrong")
+            case .success(_): XCTFail("Expected error receive \(result) insted")
+                
+            }
+            
             exp.fulfill()
         }
-        //Aqui eu incitei a ocorrência de erro por que o ponto principal do teste é testar o erro, caso eu chamsse o completion dentro do método post de HttpClientSpy futuramente deveria decidir o que responder já que haverá casos de sucesso também, então o método completionWithError foi criado dentro de HttpClientSpy para forçar a resposta de erro para a qual queremos no teste que é DomainError.unexpected. Lembrando que .unexpected está sendo definido dentro do método add de RemoteAddAccount
+        //Aqui eu incitei a ocorrência de erro por que o ponto principal do teste é testar o erro, caso eu chamasse o completion dentro do método post de HttpClientSpy, futuramente deveria decidir o que responder já que haverá casos de sucesso também, então o método completionWithError foi criado dentro de HttpClientSpy para forçar a resposta de erro para a qual queremos no teste que é DomainError.unexpected. Lembrando que .unexpected está sendo definido dentro do método add de RemoteAddAccount
         sut.httpClientSpy.completionWithError(.noConnectivity)
         wait(for: [exp], timeout: 1)
     }
@@ -53,9 +58,9 @@ extension DataTests {
         var url: URL?
         var data: Data?
         var callsCounter = 0
-        var completion: ((HttpError) -> Void)?
+        var completion: ((Result<Data, HttpError>) -> Void)?
         
-        func post(to url: URL, with data: Data?, completion: @escaping (HttpError) -> Void) {
+        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
             self.url = url
             self.data = data
             self.callsCounter += 1
@@ -63,7 +68,7 @@ extension DataTests {
         }
         
         func completionWithError(_ error: HttpError){
-            completion?(.noConnectivity)
+            completion?(.failure(error))
         }
     }
 }
