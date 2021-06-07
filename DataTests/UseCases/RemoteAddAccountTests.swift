@@ -36,14 +36,14 @@ class DataTests: XCTestCase {
     func test_add_should_complete_with_error_if_client_completes_with_invalid_data() throws {
         let sut = makeSut()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(Data("invalidData".utf8)) })
+        expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(makeInvalidData()) })
     }
     
 }
 
 extension DataTests {
     func makeSut() -> (principal: RemoteAddAccount, url: URL, httpClientSpy: HttpClientSpy){
-        let url = URL(string: "https://any-url.com")!
+        let url = makeUrl()
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         
@@ -73,6 +73,14 @@ extension DataTests {
     
     func makeAccountModel () -> AccountModel {
         return AccountModel(id: "someId", name: "anyName", email: "anyEmail", password: "anyPassword")
+    }
+    
+    func makeInvalidData () -> Data {
+        return Data("invalidData".utf8)
+    }
+    
+    func makeUrl () -> URL {
+        return URL(string: "https://any-url.com")!
     }
     
     class HttpClientSpy: HttpPostClient {
