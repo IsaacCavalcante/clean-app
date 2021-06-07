@@ -69,13 +69,6 @@ extension DataTests {
         return (principal: sut, url: url, httpClientSpy: httpClientSpy)
     }
     
-    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        //Deixando sut como weak eu permito que o método XCTAssertNil seja chamado, pois weak permite que instance seja liberado da memória e vire nil eventualmente. Esse método testa memory leaks no instance
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance)
-        }
-    }
-    
     func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         
         sut.add(addAccountModel: makeAddAccountModel()) { receivedResult  in
@@ -88,46 +81,13 @@ extension DataTests {
             
             exp.fulfill()
         }
-        //Aqui eu incitei a ocorrência de erro chamando o método action que é passado como parâmeto por que o ponto principal do teste é testar o caso, caso eu chamasse o completion dentro do método post de HttpClientSpy, futuramente deveria decidir o que responder já que haverá casos de sucesso também, então o método completionWithError foi criado dentro de HttpClientSpy para forçar a resposta de erro para a qual queremos no teste que é DomainError.unexpected. Lembrando que .unexpected está sendo definido dentro do método add de RemoteAddAccount
+        
+        //Aqui eu incitei a ocorrência de erro chamando o método action que é passado como parâmeto por que o ponto principal do teste é testar o caso, se eu chamasse o completion dentro do método post de HttpClientSpy deveria decidir o que responder já que haverá casos de sucessos e erros diferenciados, então os métodos completionWithError e completionWithData foram criados dentro de HttpClientSpy para forçar a resposta de erro ou acerto para a qual queremos no teste. Lembrando que o erro ou o model retornado está sendo definido dentro do método add de RemoteAddAccount
         action()
         wait(for: [exp], timeout: 1)
     }
     
     func makeAddAccountModel() -> AddAccountModel {
         return AddAccountModel(name: "anyName", email: "anyEmail", password: "anyPassword", passwordConfirmation: "anyPassword")
-    }
-    
-    func makeAccountModel() -> AccountModel {
-        return AccountModel(id: "someId", name: "anyName", email: "anyEmail", password: "anyPassword")
-    }
-    
-    func makeInvalidData() -> Data {
-        return Data("invalidData".utf8)
-    }
-    
-    func makeUrl() -> URL {
-        return URL(string: "https://any-url.com")!
-    }
-    
-    class HttpClientSpy: HttpPostClient {
-        var url: URL?
-        var data: Data?
-        var callsCounter = 0
-        var completion: ((Result<Data, HttpError>) -> Void)?
-        
-        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
-            self.url = url
-            self.data = data
-            self.callsCounter += 1
-            self.completion = completion
-        }
-        
-        func completionWithError(_ error: HttpError){
-            completion?(.failure(error))
-        }
-        
-        func completionWithData(_ data: Data){
-            completion?(.success(data))
-        }
     }
 }

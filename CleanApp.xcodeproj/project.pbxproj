@@ -19,6 +19,10 @@
 		9473370B2669118D008F47D4 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94733716266911DD008F47D4 /* RemoteAddAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94733715266911DD008F47D4 /* RemoteAddAccountTests.swift */; };
 		94733718266911DD008F47D4 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
+		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
+		94F2CA6D266EAE5500770226 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */; };
+		94F2CA6F266EAEB200770226 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6E266EAEB200770226 /* TestFactories.swift */; };
+		94F2CA71266EAFE600770226 /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA70266EAFE600770226 /* AccountModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,10 @@
 		94733713266911DD008F47D4 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94733715266911DD008F47D4 /* RemoteAddAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountTests.swift; sourceTree = "<group>"; };
 		94733717266911DD008F47D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
+		94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
+		94F2CA6E266EAEB200770226 /* TestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactories.swift; sourceTree = "<group>"; };
+		94F2CA70266EAFE600770226 /* AccountModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,10 +224,38 @@
 		94733714266911DD008F47D4 /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
+				94F2CA6B266EAE4400770226 /* HttpClients */,
+				94F2CA67266EADBB00770226 /* Helpers */,
 				945238312669519000A733DD /* UseCases */,
 				94733717266911DD008F47D4 /* Info.plist */,
 			);
 			path = DataTests;
+			sourceTree = "<group>";
+		};
+		94F2CA67266EADBB00770226 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				94F2CA6E266EAEB200770226 /* TestFactories.swift */,
+				94F2CA68266EADC400770226 /* Extensions */,
+				94F2CA70266EAFE600770226 /* AccountModelFactory.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		94F2CA68266EADC400770226 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		94F2CA6B266EAE4400770226 /* HttpClients */ = {
+			isa = PBXGroup;
+			children = (
+				94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */,
+			);
+			path = HttpClients;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +427,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */,
+				94F2CA6D266EAE5500770226 /* HttpClientSpy.swift in Sources */,
+				94F2CA6F266EAEB200770226 /* TestFactories.swift in Sources */,
+				94F2CA71266EAFE600770226 /* AccountModelFactory.swift in Sources */,
 				94733716266911DD008F47D4 /* RemoteAddAccountTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
