@@ -6,8 +6,7 @@ class DataTests: XCTestCase {
 
     func test_add_should_call_httpClient_with_correct_url() throws {
         let (sut, url, httpClientSpy) = makeSut()
-        let addAccountModel = makeAddAccountModel()
-        sut.add(addAccountModel: addAccountModel){_ in }
+        sut.add(addAccountModel: makeAddAccountModel()){_ in }
         
         XCTAssertEqual(httpClientSpy.url, url, "Url send to httpClient is wrong")
         XCTAssertEqual(httpClientSpy.callsCounter, 1, "post method from HttpClient called more than once")
@@ -16,62 +15,28 @@ class DataTests: XCTestCase {
     func test_add_should_call_httpClient_with_correct_data() throws {
         let sut = makeSut()
         let addAccountModel = makeAddAccountModel()
-        sut.principal.add(addAccountModel: addAccountModel){_ in }
+        sut.principal.add(addAccountModel: makeAddAccountModel()){_ in }
         
         XCTAssertEqual(sut.httpClientSpy.data, addAccountModel.toData(), "Data from to httpClient is wrong")
     }
     
     func test_add_should_complete_with_error_if_client_completes_with_error() throws {
         let sut = makeSut()
-        let addAccountModel = makeAddAccountModel()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        sut.principal.add(addAccountModel: addAccountModel) { result in
-            switch result {
-            case .failure(let error): XCTAssertEqual(error, .unexpected, "Error sent is wrong")
-            case .success(_): XCTFail("Expected error received \(result) insted")
-                
-            }
-            
-            exp.fulfill()
-        }
-        //Aqui eu incitei a ocorrência de erro por que o ponto principal do teste é testar o erro, caso eu chamasse o completion dentro do método post de HttpClientSpy, futuramente deveria decidir o que responder já que haverá casos de sucesso também, então o método completionWithError foi criado dentro de HttpClientSpy para forçar a resposta de erro para a qual queremos no teste que é DomainError.unexpected. Lembrando que .unexpected está sendo definido dentro do método add de RemoteAddAccount
-        sut.httpClientSpy.completionWithError(.noConnectivity)
-        wait(for: [exp], timeout: 1)
+        expect(sut.principal, exp, completeWith: .failure(.unexpected), when: { sut.httpClientSpy.completionWithError(.noConnectivity) })
     }
     
     func test_add_should_complete_with_account_if_client_completes_with_valid_data() throws {
         let sut = makeSut()
-        let addAccountModel = makeAddAccountModel()
         let expectedAccount = makeAccountModel()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        sut.principal.add(addAccountModel: addAccountModel) { result in
-            switch result {
-            case .failure: XCTFail("Expected success received \(result) insted")
-            case .success(let receivedAccount): XCTAssertEqual(receivedAccount, expectedAccount, "Error send is wrong")
-                
-            }
-            
-            exp.fulfill()
-        }
-        //Aqui eu também incito a resposta da mesma forma que o teste acima, mas chamando o completionWithData para responder com Data já que esse teste valida a criação de um usuário
-        sut.httpClientSpy.completionWithData(expectedAccount.toData()!)
-        wait(for: [exp], timeout: 1)
+        expect(sut.principal, exp, completeWith: .success(expectedAccount), when: { sut.httpClientSpy.completionWithData(expectedAccount.toData()!) })
     }
     
     func test_add_should_complete_with_error_if_client_completes_with_invalid_data() throws {
         let sut = makeSut()
-        let addAccountModel = makeAddAccountModel()
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        sut.principal.add(addAccountModel: addAccountModel) { result in
-            switch result {
-            case .failure(let error): XCTAssertEqual(error, .invalidData, "Error sent is wrong")
-            case .success(_): XCTFail("Expected error received \(result) insted")
-            }
-            
-            exp.fulfill()
-        }
-        sut.httpClientSpy.completionWithData(Data("invalidData".utf8))
-        wait(for: [exp], timeout: 1)
+        expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(Data("invalidData".utf8)) })
     }
     
 }
@@ -83,6 +48,23 @@ extension DataTests {
         let sut = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         
         return (principal: sut, url: url, httpClientSpy: httpClientSpy)
+    }
+    
+    func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: Result<AccountModel, DomainError>, when action: ()->Void) {
+        
+        sut.add(addAccountModel: makeAddAccountModel()) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError)
+            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount)
+            default: XCTFail("Expected \(expectedResult) received \(receivedResult) insted")
+                
+            }
+            
+            exp.fulfill()
+        }
+        //Aqui eu incitei a ocorrência de erro chamando o método action que é passado como parâmeto por que o ponto principal do teste é testar o caso, caso eu chamasse o completion dentro do método post de HttpClientSpy, futuramente deveria decidir o que responder já que haverá casos de sucesso também, então o método completionWithError foi criado dentro de HttpClientSpy para forçar a resposta de erro para a qual queremos no teste que é DomainError.unexpected. Lembrando que .unexpected está sendo definido dentro do método add de RemoteAddAccount
+        action()
+        wait(for: [exp], timeout: 1)
     }
     
     func makeAddAccountModel () -> AddAccountModel {
