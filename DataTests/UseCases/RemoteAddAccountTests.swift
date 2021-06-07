@@ -42,21 +42,33 @@ class DataTests: XCTestCase {
 }
 
 extension DataTests {
-    func makeSut() -> (principal: RemoteAddAccount, url: URL, httpClientSpy: HttpClientSpy){
+    
+    //Já que muitos métodos chamam makeSut fica difícil saber em qual teste o erro ocorreu, os parâmetros file e line são usados para que os erros apareçam onde os métodos foram chamados no teste ao invés de aparecer em makeSut
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (principal: RemoteAddAccount, url: URL, httpClientSpy: HttpClientSpy){
         let url = makeUrl()
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         
+        checkMemoryLeak(for: sut)
+        checkMemoryLeak(for: httpClientSpy)
+        
         return (principal: sut, url: url, httpClientSpy: httpClientSpy)
     }
     
-    func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: Result<AccountModel, DomainError>, when action: ()->Void) {
+    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        //Deixando sut como weak eu permito que o método XCTAssertNil seja chamado, pois weak permite que instance seja liberado da memória e vire nil eventualmente. Esse método testa memory leaks no instance
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance)
+        }
+    }
+    
+    func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         
         sut.add(addAccountModel: makeAddAccountModel()) { receivedResult in
             switch (receivedResult, expectedResult) {
-            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError)
-            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount)
-            default: XCTFail("Expected \(expectedResult) received \(receivedResult) insted")
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
+            default: XCTFail("Expected \(expectedResult) received \(receivedResult) insted", file: file, line: line)
                 
             }
             

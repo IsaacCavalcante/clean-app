@@ -17,7 +17,6 @@ public final class RemoteAddAccount: AddAccount {
             switch result{
             case .success(let data):
                 if let model: AccountModel = data.toModel() {
-                    print("=========================")
                     completion(.success(model))
                     break
                 }
