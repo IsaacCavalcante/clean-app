@@ -6,7 +6,7 @@ class DataTests: XCTestCase {
 
     func test_add_should_call_httpClient_with_correct_url() throws {
         let (sut, url, httpClientSpy) = makeSut()
-        sut.add(addAccountModel: makeAddAccountModel()){_ in }
+        sut.add(addAccountModel: makeAddAccountModel()){_  in }
         
         XCTAssertEqual(httpClientSpy.url, url, "Url send to httpClient is wrong")
         XCTAssertEqual(httpClientSpy.callsCounter, 1, "post method from HttpClient called more than once")
@@ -15,7 +15,7 @@ class DataTests: XCTestCase {
     func test_add_should_call_httpClient_with_correct_data() throws {
         let sut = makeSut()
         let addAccountModel = makeAddAccountModel()
-        sut.principal.add(addAccountModel: makeAddAccountModel()){_ in }
+        sut.principal.add(addAccountModel: makeAddAccountModel()){_  in }
         
         XCTAssertEqual(sut.httpClientSpy.data, addAccountModel.toData(), "Data from to httpClient is wrong")
     }
@@ -39,6 +39,20 @@ class DataTests: XCTestCase {
         expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(makeInvalidData()) })
     }
     
+    func test_add_should_not_complete_with_error_if_sut_has_been_deallicated() throws {
+        let httpClientSpy = HttpClientSpy()
+        var sut: RemoteAddAccount? = RemoteAddAccount(url: makeUrl(), httpClient: httpClientSpy)
+        var result: Result<AccountModel, DomainError>?
+
+        //aqui é atribuído a result o primeiro parâmetro de completion
+        sut?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
+        
+        //ao definir sut como nil, simulamos que houve um comportamento inesperado (como o usuário não esperar a request e sair da tela) e a instância de RemoteAddAccount acabou sendo desalocada da memória
+        sut = nil
+
+        httpClientSpy.completionWithError(.noConnectivity)
+        XCTAssertNil(result)
+    }
 }
 
 extension DataTests {
@@ -64,7 +78,7 @@ extension DataTests {
     
     func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         
-        sut.add(addAccountModel: makeAddAccountModel()) { receivedResult in
+        sut.add(addAccountModel: makeAddAccountModel()) { receivedResult  in
             switch (receivedResult, expectedResult) {
             case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
             case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
@@ -79,19 +93,19 @@ extension DataTests {
         wait(for: [exp], timeout: 1)
     }
     
-    func makeAddAccountModel () -> AddAccountModel {
+    func makeAddAccountModel() -> AddAccountModel {
         return AddAccountModel(name: "anyName", email: "anyEmail", password: "anyPassword", passwordConfirmation: "anyPassword")
     }
     
-    func makeAccountModel () -> AccountModel {
+    func makeAccountModel() -> AccountModel {
         return AccountModel(id: "someId", name: "anyName", email: "anyEmail", password: "anyPassword")
     }
     
-    func makeInvalidData () -> Data {
+    func makeInvalidData() -> Data {
         return Data("invalidData".utf8)
     }
     
-    func makeUrl () -> URL {
+    func makeUrl() -> URL {
         return URL(string: "https://any-url.com")!
     }
     
