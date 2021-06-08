@@ -16,7 +16,7 @@ class AlamofireAdapterTest: XCTestCase {
     }
 
 
-    func test_() {
+    func test_post_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
         
         //Esse trecho de código está definindo que a session usada para fazer as requisições no AlamofireAdapter não será a .default e sim uma nova session com as configurações definidas para que toda requisição feita usando ela seja interceptada por URLProtocolStub
