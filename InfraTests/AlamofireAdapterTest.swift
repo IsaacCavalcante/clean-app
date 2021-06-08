@@ -11,7 +11,7 @@ class AlamofireAdapterTest: XCTestCase {
         }
         
         func post(to url: URL, completion: (Result<AnyObject,Error>) -> Void) {
-            session.request(url).resume()
+            session.request(url, method: .post).resume()
         }
     }
 
@@ -30,6 +30,7 @@ class AlamofireAdapterTest: XCTestCase {
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         URLProtocolStub.observeRequest { request in
             XCTAssertEqual(url, request.url, "Url send to AlamofireAdapter is wrong")
+            XCTAssertEqual("POST", request.httpMethod, "Http method calls by AlamofireAdapter is wrong")
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
