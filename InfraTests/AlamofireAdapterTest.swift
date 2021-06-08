@@ -10,8 +10,9 @@ class AlamofireAdapterTest: XCTestCase {
             self.session = session
         }
         
-        func post(to url: URL, completion: (Result<AnyObject,Error>) -> Void) {
-            session.request(url, method: .post).resume()
+        func post(to url: URL, with data: Data? ,completion: (Result<AnyObject,Error>) -> Void) {
+            let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:Any]
+            session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).resume()
         }
     }
 
@@ -24,13 +25,14 @@ class AlamofireAdapterTest: XCTestCase {
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = Session(configuration: configuration)
         let sut = AlamofireAdapter(session: session)
-        
-        sut.post(to: url){_  in }
+        let data = makeValidData()
+        sut.post(to: url, with: data){_  in }
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         URLProtocolStub.observeRequest { request in
             XCTAssertEqual(url, request.url, "Url send to AlamofireAdapter is wrong")
             XCTAssertEqual("POST", request.httpMethod, "Http method calls by AlamofireAdapter is wrong")
+            XCTAssertNotNil(request.httpBodyStream)
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
