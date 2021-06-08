@@ -14,7 +14,7 @@ public final class RemoteAddAccount: AddAccount {
     public func add(addAccountModel: AddAccountModel, completion: @escaping (Result <AccountModel,DomainError>) -> Void) {
         httpClient.post(to: url, with: addAccountModel.toData()){ [weak self] result in
             
-            //garante que a instância de RemoteAddAccount ainda exista para continuar chamando o completion
+            //garante que a instância de RemoteAddAccount ainda exista para continuar chamando o completion. Isso só pode ser garantido por causa da definição de [weak self] na closure acima
             guard self != nil else { return }
             
             switch result{

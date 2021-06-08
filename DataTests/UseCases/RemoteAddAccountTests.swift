@@ -44,7 +44,7 @@ class DataTests: XCTestCase {
         var sut: RemoteAddAccount? = RemoteAddAccount(url: makeUrl(), httpClient: httpClientSpy)
         var result: Result<AccountModel, DomainError>?
 
-        //aqui é atribuído a result o primeiro parâmetro de completion
+        //aqui é atribuído a result o primeiro parâmetro de completion to tipo Result<AccountModel, DomainError>
         sut?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
         
         //ao definir sut como nil, simulamos que houve um comportamento inesperado (como o usuário não esperar a request e sair da tela) e a instância de RemoteAddAccount acabou sendo desalocada da memória
