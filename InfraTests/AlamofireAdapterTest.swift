@@ -66,14 +66,14 @@ extension AlamofireAdapterTest {
     
     func testRequestFor(url: URL = makeUrl(), data: Data?, action: @escaping (URLRequest) -> Void) {
         let sut = makeSut().sut
-        sut.post(to: url, with: data){_  in }
-        
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        URLProtocolStub.observeRequest { request in
-            action(request)
-            exp.fulfill()
-        }
+        sut.post(to: url, with: data){_  in exp.fulfill() }
+        var request: URLRequest?
+        
+        //Estamos chamando exp.fulfill na closure de post e capturando a request e executando após o wait por que se fossem executados na request abaixo poderiam causar data racing
+        URLProtocolStub.observeRequest { request = $0 }
         wait(for: [exp], timeout: 1)
+        action(request!)
     }
 }
 
