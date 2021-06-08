@@ -1,5 +1,6 @@
 import XCTest
 import Alamofire
+import Data
 
 class AlamofireAdapterTest: XCTestCase {
     
@@ -10,8 +11,13 @@ class AlamofireAdapterTest: XCTestCase {
             self.session = session
         }
         
-        func post(to url: URL, with data: Data? ,completion: (Result<AnyObject,Error>) -> Void) {
-            session.request(url, method: .post, parameters: data?.toJson(), encoding: JSONEncoding.default).resume()
+        func post(to url: URL, with data: Data? ,completion: @escaping (Result<AnyObject,HttpError>) -> Void) {
+            session.request(url, method: .post, parameters: data?.toJson(), encoding: JSONEncoding.default).responseData { dataResponse in
+                switch dataResponse.result {
+                case .failure: completion(.failure(.noConnectivity))
+                case .success(_): break
+                }
+            }
         }
     }
 
@@ -30,6 +36,20 @@ class AlamofireAdapterTest: XCTestCase {
         testRequestFor(data: nil) { request in
             XCTAssertNil(request.httpBodyStream)
         }
+    }
+    
+    func test_post_should_complete_with_error_when_request_complete_with_error() {
+        let sut = makeSut().sut
+        URLProtocolStub.simulate(data: nil, response: nil, error: makeError())
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        sut.post(to: makeUrl(), with: makeValidData()) { result in
+            switch result{
+            case .failure(let error): XCTAssertEqual(error, .noConnectivity)
+            case .success: XCTFail("Expected error \(result) insted")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
     }
 }
 
@@ -60,9 +80,18 @@ extension AlamofireAdapterTest {
 //Essa classe URLProtocol intercepta as requests que são feitas. Aqui usamos para testar as nossas requests
 class URLProtocolStub: URLProtocol {
     static var emit: ((URLRequest) -> Void)?
+    static var data: Data?
+    static var response: HTTPURLResponse?
+    static var error: Error?
     
     static func observeRequest(completion: @escaping (URLRequest) -> Void) {
         URLProtocolStub.emit = completion
+    }
+    
+    static func simulate(data: Data?, response: HTTPURLResponse?, error: Error?) {
+        URLProtocolStub.data = data
+        URLProtocolStub.response = response
+        URLProtocolStub.error = error
     }
     
     open override class func canInit(with request: URLRequest) -> Bool {
@@ -76,6 +105,19 @@ class URLProtocolStub: URLProtocol {
     
     open override func startLoading() {
         URLProtocolStub.emit?(request)
+        
+        if let data = URLProtocolStub.data {
+            client?.urlProtocol(self, didLoad: data)
+        }
+        
+        if let response = URLProtocolStub.response {
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+        }
+        
+        if let error = URLProtocolStub.error {
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+        client?.urlProtocolDidFinishLoading(self)
     }
     
     open override func stopLoading() {

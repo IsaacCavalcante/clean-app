@@ -17,7 +17,6 @@
 		94231C00266F96A600B7EDB9 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94231C01266F96AC00B7EDB9 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6E266EAEB200770226 /* TestFactories.swift */; };
 		94231C04266F99D400B7EDB9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 94231C03266F99D400B7EDB9 /* Alamofire */; };
-		944D36DB266FF23000B29507 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945238382669722300A733DD /* DataExtension.swift */; };
 		9452383426695BCB00A733DD /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9452383326695BCB00A733DD /* DomainError.swift */; };
 		945238362669604400A733DD /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945238352669604400A733DD /* HttpError.swift */; };
 		945238392669722300A733DD /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945238382669722300A733DD /* DataExtension.swift */; };
@@ -562,7 +561,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				94231C01266F96AC00B7EDB9 /* TestFactories.swift in Sources */,
-				944D36DB266FF23000B29507 /* DataExtension.swift in Sources */,
 				94231C00266F96A600B7EDB9 /* XCTestCaseExtension.swift in Sources */,
 				94231BF2266F93A900B7EDB9 /* AlamofireAdapterTest.swift in Sources */,
 			);

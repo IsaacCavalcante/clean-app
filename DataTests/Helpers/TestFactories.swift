@@ -11,3 +11,7 @@ func makeInvalidData() -> Data {
 func makeUrl() -> URL {
     return URL(string: "https://any-url.com")!
 }
+
+func makeError() -> Error {
+    return NSError(domain: "Any Error", code: 0)
+}
