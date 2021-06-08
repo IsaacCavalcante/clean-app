@@ -35,13 +35,13 @@ class AlamofireAdapterTest: XCTestCase {
 }
 
 extension AlamofireAdapterTest {
-    func makeSut () -> (sut: AlamofireAdapter, session: Session) {
+    func makeSut (file: StaticString = #filePath, line: UInt = #line) -> (sut: AlamofireAdapter, session: Session) {
         //Esse trecho de código está definindo que a session usada para fazer as requisições no AlamofireAdapter não será a .default e sim uma nova session com as configurações definidas para que toda requisição feita usando ela seja interceptada por URLProtocolStub
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = Session(configuration: configuration)
         let sut = AlamofireAdapter(session: session)
-        
+        checkMemoryLeak(for: sut, file: file, line: line)
         return (sut: sut, session: session)
     }
     

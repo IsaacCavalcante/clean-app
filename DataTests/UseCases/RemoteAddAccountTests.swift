@@ -39,7 +39,7 @@ class DataTests: XCTestCase {
         expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(makeInvalidData()) })
     }
     
-    func test_add_should_not_complete_with_error_if_sut_has_been_deallicated() throws {
+    func test_add_should_not_complete_with_error_if_sut_has_been_deallocated() throws {
         let httpClientSpy = HttpClientSpy()
         var sut: RemoteAddAccount? = RemoteAddAccount(url: makeUrl(), httpClient: httpClientSpy)
         var result: Result<AccountModel, DomainError>?
