@@ -11,7 +11,7 @@ class AlamofireAdapterTest: XCTestCase {
         }
         
         func post(to url: URL, with data: Data? ,completion: (Result<AnyObject,Error>) -> Void) {
-            let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:Any]
+            let json = data == nil ? nil : try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:Any]
             session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).resume()
         }
     }
@@ -33,6 +33,24 @@ class AlamofireAdapterTest: XCTestCase {
             XCTAssertEqual(url, request.url, "Url send to AlamofireAdapter is wrong")
             XCTAssertEqual("POST", request.httpMethod, "Http method calls by AlamofireAdapter is wrong")
             XCTAssertNotNil(request.httpBodyStream)
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_post_should_make_request_with_no_data() {
+        let url = makeUrl()
+        
+        //Esse trecho de código está definindo que a session usada para fazer as requisições no AlamofireAdapter não será a .default e sim uma nova session com as configurações definidas para que toda requisição feita usando ela seja interceptada por URLProtocolStub
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [URLProtocolStub.self]
+        let session = Session(configuration: configuration)
+        let sut = AlamofireAdapter(session: session)
+        sut.post(to: url, with: nil){_  in }
+        
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        URLProtocolStub.observeRequest { request in
+            XCTAssertNil(request.httpBodyStream)
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
