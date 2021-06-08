@@ -19,12 +19,8 @@ class AlamofireAdapterTest: XCTestCase {
 
     func test_post_should_make_request_with_valid_url_and_method() {
         let url = makeUrl()
+        let sut = makeSut().sut
         
-        //Esse trecho de código está definindo que a session usada para fazer as requisições no AlamofireAdapter não será a .default e sim uma nova session com as configurações definidas para que toda requisição feita usando ela seja interceptada por URLProtocolStub
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [URLProtocolStub.self]
-        let session = Session(configuration: configuration)
-        let sut = AlamofireAdapter(session: session)
         let data = makeValidData()
         sut.post(to: url, with: data){_  in }
         
@@ -39,14 +35,9 @@ class AlamofireAdapterTest: XCTestCase {
     }
     
     func test_post_should_make_request_with_no_data() {
-        let url = makeUrl()
+        let sut = makeSut().sut
         
-        //Esse trecho de código está definindo que a session usada para fazer as requisições no AlamofireAdapter não será a .default e sim uma nova session com as configurações definidas para que toda requisição feita usando ela seja interceptada por URLProtocolStub
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [URLProtocolStub.self]
-        let session = Session(configuration: configuration)
-        let sut = AlamofireAdapter(session: session)
-        sut.post(to: url, with: nil){_  in }
+        sut.post(to: makeUrl(), with: nil){_  in }
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         URLProtocolStub.observeRequest { request in
@@ -83,4 +74,16 @@ class AlamofireAdapterTest: XCTestCase {
 
     }
 
+}
+
+extension AlamofireAdapterTest {
+    func makeSut () -> (sut: AlamofireAdapter, session: Session) {
+        //Esse trecho de código está definindo que a session usada para fazer as requisições no AlamofireAdapter não será a .default e sim uma nova session com as configurações definidas para que toda requisição feita usando ela seja interceptada por URLProtocolStub
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [URLProtocolStub.self]
+        let session = Session(configuration: configuration)
+        let sut = AlamofireAdapter(session: session)
+        
+        return (sut: sut, session: session)
+    }
 }
