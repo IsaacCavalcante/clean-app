@@ -28,7 +28,6 @@
 		94733718266911DD008F47D4 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
-		94C358B12670FC0C0023D955 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358B02670FC0C0023D955 /* UseCasesIntegrationTests.swift */; };
 		94C358B32670FC0C0023D955 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94F2CA6D266EAE5500770226 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */; };
@@ -136,15 +135,7 @@
 		94733717266911DD008F47D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94C358732670DD520023D955 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		94C358772670E1210023D955 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
-		94C3587F2670EB3E0023D955 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
-		94C358812670EB3E0023D955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94C3588E2670EBEB0023D955 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
-		94C358902670EBEB0023D955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94C3589D2670EC570023D955 /* AddAccountIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountIntegrationTests.swift; sourceTree = "<group>"; };
-		94C3589F2670EC570023D955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94C358AE2670FC0C0023D955 /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		94C358B02670FC0C0023D955 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; };
-		94C358B22670FC0C0023D955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
 		94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
 		94F2CA6E266EAEB200770226 /* TestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactories.swift; sourceTree = "<group>"; };
@@ -229,10 +220,6 @@
 				94733714266911DD008F47D4 /* DataTests */,
 				94231BE5266F93A900B7EDB9 /* Infra */,
 				94231BF0266F93A900B7EDB9 /* InfraTests */,
-				94C3587E2670EB3E0023D955 /* DomainTests */,
-				94C3588D2670EBEB0023D955 /* DomainTests */,
-				94C3589C2670EC570023D955 /* UseCasesIntegrationTests */,
-				94C358AF2670FC0C0023D955 /* UseCasesIntegrationTests */,
 				9432AA4A2669045E00E8F542 /* Products */,
 				947337092669118D008F47D4 /* Frameworks */,
 			);
@@ -372,42 +359,6 @@
 				94C358772670E1210023D955 /* URLProtocolStub.swift */,
 			);
 			path = Http;
-			sourceTree = "<group>";
-		};
-		94C3587E2670EB3E0023D955 /* DomainTests */ = {
-			isa = PBXGroup;
-			children = (
-				94C3587F2670EB3E0023D955 /* DomainTests.swift */,
-				94C358812670EB3E0023D955 /* Info.plist */,
-			);
-			path = DomainTests;
-			sourceTree = "<group>";
-		};
-		94C3588D2670EBEB0023D955 /* DomainTests */ = {
-			isa = PBXGroup;
-			children = (
-				94C3588E2670EBEB0023D955 /* DomainTests.swift */,
-				94C358902670EBEB0023D955 /* Info.plist */,
-			);
-			path = DomainTests;
-			sourceTree = "<group>";
-		};
-		94C3589C2670EC570023D955 /* UseCasesIntegrationTests */ = {
-			isa = PBXGroup;
-			children = (
-				94C3589D2670EC570023D955 /* AddAccountIntegrationTests.swift */,
-				94C3589F2670EC570023D955 /* Info.plist */,
-			);
-			path = UseCasesIntegrationTests;
-			sourceTree = "<group>";
-		};
-		94C358AF2670FC0C0023D955 /* UseCasesIntegrationTests */ = {
-			isa = PBXGroup;
-			children = (
-				94C358B02670FC0C0023D955 /* UseCasesIntegrationTests.swift */,
-				94C358B22670FC0C0023D955 /* Info.plist */,
-			);
-			path = UseCasesIntegrationTests;
 			sourceTree = "<group>";
 		};
 		94F2CA67266EADBB00770226 /* Helpers */ = {
@@ -741,7 +692,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C358B12670FC0C0023D955 /* UseCasesIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
