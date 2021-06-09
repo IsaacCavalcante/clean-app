@@ -22,6 +22,7 @@ public final class RemoteAddAccount: AddAccount {
                 if let model: AccountModel = data?.toModel() {
                     completion(.success(model))
                     break
+                     
                 }
                 completion(.failure(.invalidData))
 
