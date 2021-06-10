@@ -41,7 +41,13 @@ public final class SignupPresenter {
         }else if (viewModel.password != viewModel.passwordConfirmation) {
             return "Falha ao confirmar senha"
         }
-        _ = emailValidator?.isValid(email: viewModel.email!)
+        
+        //Só estou fazendo unwrap de viewModel.email! por que nos if-else acima eu garanto que se viewModel.email estiver vazio o fluxo do código não chega nessa linha
+        guard let isEmailValid = emailValidator?.isValid(email: viewModel.email!) else { return nil }
+        
+        if(!isEmailValid) {
+            return "Email não é válido"
+        }
         return nil
     }
 }
