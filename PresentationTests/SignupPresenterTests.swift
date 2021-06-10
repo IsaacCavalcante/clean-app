@@ -1,48 +1,5 @@
 import XCTest
-
-class SignupPresenter {
-    private let alertView: AlertView?
-    
-    init(alertView: AlertView) {
-        self.alertView = alertView
-    }
-    
-    func signUp(viewModel: SignupViewModel) {
-        if let message = validate(viewModel: viewModel) {
-            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
-        }
-    }
-    
-    private func validate(viewModel: SignupViewModel) -> String? {
-        if (viewModel.name == nil || viewModel.name!.isEmpty) {
-            return "Nome é obrigatório"
-        } else if (viewModel.email == nil || viewModel.email!.isEmpty) {
-            return "Email é obrigatório"
-        } else if (viewModel.password == nil || viewModel.password!.isEmpty) {
-            return "Senha é obrigatória"
-        } else if (viewModel.passwordConfirmation == nil || viewModel.passwordConfirmation!.isEmpty) {
-            return "Confirmação de senha é obrigatória"
-        }
-        return nil
-    }
-}
-
-protocol AlertView {
-    func showMessage(viewModel: AlertViewModel)
-}
-
-struct AlertViewModel: Equatable {
-    var title: String
-    var message: String
-}
-
-struct SignupViewModel {
-    var name: String?
-    var email: String?
-    var password: String?
-    var passwordConfirmation: String?
-}
-
+import Presentation
 
 class SignupPresenterTests: XCTestCase {
     func test_signup_should_show_error_message_if_name_is_not_provider() {

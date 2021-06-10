@@ -30,6 +30,10 @@
 		94733718266911DD008F47D4 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		9475A70B267121C900EEF068 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A70A267121C900EEF068 /* UseCasesIntegrationTests.swift */; };
 		9475A70D267121C900EEF068 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
+		948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE3D2672893F00267893 /* SignupPresenter.swift */; };
+		948EBE4126728B2600267893 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; };
+		948EBE4226728B2600267893 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		948EBE4826728BF000267893 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE4726728BF000267893 /* AlertView.swift */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
 		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
@@ -95,6 +99,13 @@
 			remoteGlobalIDString = 94231BE3266F93A900B7EDB9;
 			remoteInfo = Infra;
 		};
+		948EBE4326728B2600267893 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9432AA402669045E00E8F542 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 947336EF26690583008F47D4;
+			remoteInfo = Domain;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,6 +127,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9473370B2669118D008F47D4 /* Domain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		948EBE4526728B2600267893 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				948EBE4226728B2600267893 /* Domain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +173,8 @@
 		9475A708267121C900EEF068 /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9475A70A267121C900EEF068 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; };
 		9475A70C267121C900EEF068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		948EBE3D2672893F00267893 /* SignupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
+		948EBE4726728BF000267893 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		94C358732670DD520023D955 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		94C358772670E1210023D955 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
@@ -181,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948EBE4126728B2600267893 /* Domain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +369,9 @@
 		946CC7DD267153C100D42FDD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				948EBE4626728BE100267893 /* View */,
 				946CC7DF267153C100D42FDD /* Info.plist */,
+				948EBE4926728C0E00267893 /* Presenters */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -405,6 +432,22 @@
 				9475A70C267121C900EEF068 /* Info.plist */,
 			);
 			path = UseCasesIntegrationTests;
+			sourceTree = "<group>";
+		};
+		948EBE4626728BE100267893 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				948EBE4726728BF000267893 /* AlertView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		948EBE4926728C0E00267893 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				948EBE3D2672893F00267893 /* SignupPresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		94C358752670E0360023D955 /* Http */ = {
@@ -533,10 +576,12 @@
 				946CC7D8267153C100D42FDD /* Sources */,
 				946CC7D9267153C100D42FDD /* Frameworks */,
 				946CC7DA267153C100D42FDD /* Resources */,
+				948EBE4526728B2600267893 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				948EBE4426728B2600267893 /* PBXTargetDependency */,
 			);
 			name = Presentation;
 			productName = Presentation;
@@ -655,6 +700,7 @@
 					};
 					946CC7DB267153C100D42FDD = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					946CC7E3267153C100D42FDD = {
 						CreatedOnToolsVersion = 12.5;
@@ -786,6 +832,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */,
+				948EBE4826728BF000267893 /* AlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,6 +929,11 @@
 			isa = PBXTargetDependency;
 			target = 94231BE3266F93A900B7EDB9 /* Infra */;
 			targetProxy = 9475A715267121E300EEF068 /* PBXContainerItemProxy */;
+		};
+		948EBE4426728B2600267893 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 947336EF26690583008F47D4 /* Domain */;
+			targetProxy = 948EBE4326728B2600267893 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1094,6 +1147,7 @@
 		946CC7ED267153C100D42FDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1110,6 +1164,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaac.app.Presentation;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -1117,6 +1172,7 @@
 		946CC7EE267153C100D42FDD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1140,6 +1196,7 @@
 		946CC7EF267153C100D42FDD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PresentationTests/Info.plist;
@@ -1157,6 +1214,7 @@
 		946CC7F0267153C100D42FDD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PresentationTests/Info.plist;
