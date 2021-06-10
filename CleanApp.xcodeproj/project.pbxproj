@@ -34,6 +34,7 @@
 		948EBE4126728B2600267893 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; };
 		948EBE4226728B2600267893 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		948EBE4826728BF000267893 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE4726728BF000267893 /* AlertView.swift */; };
+		948EBE4C267295B200267893 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE4B267295B200267893 /* EmailValidator.swift */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
 		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
@@ -175,6 +176,7 @@
 		9475A70C267121C900EEF068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		948EBE3D2672893F00267893 /* SignupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
 		948EBE4726728BF000267893 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		948EBE4B267295B200267893 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		94C358732670DD520023D955 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		94C358772670E1210023D955 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
@@ -369,7 +371,8 @@
 		946CC7DD267153C100D42FDD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				948EBE4626728BE100267893 /* View */,
+				948EBE4A2672959D00267893 /* Validators */,
+				948EBE4626728BE100267893 /* Views */,
 				946CC7DF267153C100D42FDD /* Info.plist */,
 				948EBE4926728C0E00267893 /* Presenters */,
 			);
@@ -434,12 +437,12 @@
 			path = UseCasesIntegrationTests;
 			sourceTree = "<group>";
 		};
-		948EBE4626728BE100267893 /* View */ = {
+		948EBE4626728BE100267893 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				948EBE4726728BF000267893 /* AlertView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		948EBE4926728C0E00267893 /* Presenters */ = {
@@ -448,6 +451,14 @@
 				948EBE3D2672893F00267893 /* SignupPresenter.swift */,
 			);
 			path = Presenters;
+			sourceTree = "<group>";
+		};
+		948EBE4A2672959D00267893 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				948EBE4B267295B200267893 /* EmailValidator.swift */,
+			);
+			path = Validators;
 			sourceTree = "<group>";
 		};
 		94C358752670E0360023D955 /* Http */ = {
@@ -834,6 +845,7 @@
 			files = (
 				948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */,
 				948EBE4826728BF000267893 /* AlertView.swift in Sources */,
+				948EBE4C267295B200267893 /* EmailValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
