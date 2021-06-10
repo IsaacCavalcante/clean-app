@@ -33,8 +33,7 @@ struct SignupViewModel {
 
 class SignupPresenterTests: XCTestCase {
     func test_signup_should_show_error_message_if_name_is_not_provider() {
-        let alertViewSpy = AlertViewSpy()
-        let sut = SignupPresenter(alertView: alertViewSpy)
+        let (sut, alertViewSpy) = makeSut()
         let signupViewModel = SignupViewModel(email: "any@mail.com", password: "password", passwordConfirmation: "password")
         sut.signUp(viewModel: signupViewModel)
         
@@ -43,6 +42,13 @@ class SignupPresenterTests: XCTestCase {
 }
 
 extension SignupPresenterTests {
+    func makeSut() -> (sut: SignupPresenter, alertViewSpy: AlertViewSpy) {
+        let alertViewSpy = AlertViewSpy()
+        let sut = SignupPresenter(alertView: alertViewSpy)
+        
+        return  (sut, alertViewSpy)
+    }
+    
     class AlertViewSpy: AlertView {
         var viewModel: AlertViewModel?
         
