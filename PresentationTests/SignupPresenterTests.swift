@@ -130,9 +130,14 @@ class SignupPresenterTests: XCTestCase {
         let sut = test.sut
         let loadingViewSpy = test.loadingViewSpy
         
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: true ))
+            exp.fulfill()
+        }
         sut.signUp(viewModel: makeSignupViewModel())
         
-        XCTAssertEqual(loadingViewSpy.viewModel, LoadingViewModel(isLoading: true ))
+        wait(for: [exp], timeout: 1)
     }
     
     func test_signup_should_call_email_validator_with_correct_email() {
@@ -190,10 +195,14 @@ extension SignupPresenterTests {
     }
     
     class LoadingViewSpy: LoadingView {
-        var viewModel: LoadingViewModel?
+        var emit: ((LoadingViewModel) -> Void)?
+        
+        func observer(completion: @escaping (LoadingViewModel) -> Void) {
+            self.emit = completion
+        }
         
         func display(viewModel: LoadingViewModel) {
-            self.viewModel = viewModel
+            self.emit?(viewModel)
         }
         
     }
