@@ -75,7 +75,11 @@ class SignupPresenterTests: XCTestCase {
     }
     
     func test_signup_should_show_error_message_if_invalid_email_is_provided() {
-        let (sut, alertViewSpy, emailValidatorSpy, _) = makeSut()
+        let test = makeSut()
+        
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let emailValidatorSpy = test.emailValidatorSpy
 
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         alertViewSpy.observer { [weak self] viewModel in
@@ -120,6 +124,17 @@ class SignupPresenterTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
+    
+    func test_signup_should_show_loading_before_call_addAccount() {
+        let test = makeSut()
+        let sut = test.sut
+        let loadingViewSpy = test.loadingViewSpy
+        
+        sut.signUp(viewModel: makeSignupViewModel())
+        
+        XCTAssertEqual(loadingViewSpy.viewModel, LoadingViewModel(isLoading: true ))
+    }
+    
     func test_signup_should_call_email_validator_with_correct_email() {
         let test = makeSut()
         let sut = test.sut
@@ -143,14 +158,15 @@ class SignupPresenterTests: XCTestCase {
 }
 
 extension SignupPresenterTests {
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SignupPresenter, alertViewSpy: AlertViewSpy, emailValidatorSpy: EmailValidatorSpy, addAccountSpy: AddAccountSpy) {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SignupPresenter, alertViewSpy: AlertViewSpy, loadingViewSpy: LoadingViewSpy, emailValidatorSpy: EmailValidatorSpy, addAccountSpy: AddAccountSpy) {
         let alertViewSpy = AlertViewSpy()
+        let loadingViewSpy = LoadingViewSpy()
         let emailValidatorSpy = EmailValidatorSpy()
         let addAccountSpy = AddAccountSpy()
-        let sut = SignupPresenter(alertView: alertViewSpy, emailValidator: emailValidatorSpy, addAccount: addAccountSpy)
+        let sut = SignupPresenter(alertView: alertViewSpy, emailValidator: emailValidatorSpy, addAccount: addAccountSpy, loadingView: loadingViewSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         
-        return (sut, alertViewSpy, emailValidatorSpy, addAccountSpy)
+        return (sut, alertViewSpy, loadingViewSpy, emailValidatorSpy, addAccountSpy)
     }
     
     func makeSignupViewModel(name: String? = "Isaac Cavalcante", email: String? = "any@mail.com", password: String? = "password", passwordConfirmation: String? = "password") -> SignupViewModel {
@@ -171,6 +187,15 @@ extension SignupPresenterTests {
         func showMessage(viewModel: AlertViewModel) {
             self.emit?(viewModel)
         }
+    }
+    
+    class LoadingViewSpy: LoadingView {
+        var viewModel: LoadingViewModel?
+        
+        func display(viewModel: LoadingViewModel) {
+            self.viewModel = viewModel
+        }
+        
     }
     
     class EmailValidatorSpy: EmailValidator {
