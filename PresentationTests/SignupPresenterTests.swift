@@ -62,6 +62,28 @@ class SignupPresenterTests: XCTestCase {
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModel(message: "Email não é válido"))
     }
     
+    func test_signup_should_show_error_message_if_addAccount_fails() {
+        let test = makeSut()
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let addAccountSpy = test.addAccountSpy
+        
+        sut.signUp(viewModel: makeSignupViewModel())
+        addAccountSpy.completeWithError(.unexpected)
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModel(title: "Error", message: "Algo inesperado aconteceu. Tente novamente em alguns instantes"))
+    }
+    
+    func test_signup_should_show_succes_message_if_addAccount_complete_with_success() {
+        let test = makeSut()
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let addAccountSpy = test.addAccountSpy
+        
+        sut.signUp(viewModel: makeSignupViewModel())
+        addAccountSpy.completeWithAccountModel(makeAccountModel())
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModel(title: "Sucesso", message: "Conta criada com sucesso"))
+    }
+    
     func test_signup_should_call_email_validator_with_correct_email() {
         let test = makeSut()
         let sut = test.sut
@@ -125,9 +147,19 @@ extension SignupPresenterTests {
     
     class AddAccountSpy: AddAccount {
         var addAccountModel: AddAccountModel?
+        var completion: ((Result<AccountModel, DomainError>) -> Void)?
         
         func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
             self.addAccountModel = addAccountModel
+            self.completion = completion
+        }
+        
+        func completeWithError (_ error: DomainError) {
+            completion?(.failure(error))
+        }
+        
+        func completeWithAccountModel (_ accountModel: AccountModel) {
+            completion?(.success(accountModel))
         }
     }
 }
