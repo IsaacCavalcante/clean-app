@@ -1,4 +1,5 @@
 import Foundation
+import Domain
 
 public struct SignupViewModel {
     public var name: String?
@@ -15,17 +16,22 @@ public struct SignupViewModel {
 }
 
 public final class SignupPresenter {
-    private let alertView: AlertView?
-    private let emailValidator: EmailValidator?
+    private let alertView: AlertView
+    private let emailValidator: EmailValidator
+    private let addAccount: AddAccount
     
-    public init(alertView: AlertView, emailValidator: EmailValidator) {
+    public init(alertView: AlertView, emailValidator: EmailValidator, addAccount: AddAccount) {
         self.alertView = alertView
         self.emailValidator = emailValidator
+        self.addAccount = addAccount
     }
     
     public func signUp(viewModel: SignupViewModel) {
         if let message = validate(viewModel: viewModel) {
-            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
+            alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
+        } else {
+            let addAccountModel = AddAccountModel(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
+            addAccount.add(addAccountModel: addAccountModel, completion: { _ in })
         }
     }
     
@@ -40,14 +46,10 @@ public final class SignupPresenter {
             return "Confirmação de senha é obrigatória"
         }else if (viewModel.password != viewModel.passwordConfirmation) {
             return "Falha ao confirmar senha"
-        }
-        
-        //Só estou fazendo unwrap de viewModel.email! por que nos if-else acima eu garanto que se viewModel.email estiver vazio o fluxo do código não chega nessa linha
-        guard let isEmailValid = emailValidator?.isValid(email: viewModel.email!) else { return nil }
-        
-        if(!isEmailValid) {
+        }else if (!emailValidator.isValid(email: viewModel.email!)) { //Só estou fazendo unwrap de viewModel.email! por que nos if-else acima eu garanto que se viewModel.email estiver vazio o fluxo do código não chega nessa linha
             return "Email não é válido"
         }
+
         return nil
     }
 }

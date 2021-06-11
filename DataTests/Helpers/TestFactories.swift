@@ -1,4 +1,5 @@
 import Foundation
+import Domain
 
 func makeValidData() -> Data {
     return Data("{\"name\": \"any-name\"}".utf8)
@@ -22,4 +23,8 @@ func makeError() -> Error {
 
 func makeHttpResponse(statusCode: Int = 200) -> HTTPURLResponse {
     return HTTPURLResponse(url: makeUrl(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+}
+
+func makeAddAccountModel() -> AddAccountModel {
+    return AddAccountModel(name: "Isaac Cavalcante", email: "any@mail.com", password: "password", passwordConfirmation: "password")
 }

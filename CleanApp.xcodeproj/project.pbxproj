@@ -10,6 +10,7 @@
 		940FAFF72669483100DE8148 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FAFF62669483100DE8148 /* Model.swift */; };
 		940FAFF9266949F400DE8148 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FAFF8266949F400DE8148 /* RemoteAddAccount.swift */; };
 		940FAFFB26694A2700DE8148 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940FAFFA26694A2700DE8148 /* HttpPostClient.swift */; };
+		942134432673871600119EB0 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6E266EAEB200770226 /* TestFactories.swift */; };
 		94231BED266F93A900B7EDB9 /* Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94231BE4266F93A900B7EDB9 /* Infra.framework */; };
 		94231BF2266F93A900B7EDB9 /* AlamofireAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94231BF1266F93A900B7EDB9 /* AlamofireAdapterTest.swift */; };
 		94231BFB266F95CE00B7EDB9 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
@@ -853,6 +854,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				942134432673871600119EB0 /* TestFactories.swift in Sources */,
 				946CC7EA267153C100D42FDD /* SignupPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
