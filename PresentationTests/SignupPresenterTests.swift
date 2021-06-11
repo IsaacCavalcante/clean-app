@@ -125,19 +125,31 @@ class SignupPresenterTests: XCTestCase {
     }
     
     
-    func test_signup_should_show_loading_before_call_addAccount() {
+    func test_signup_should_show_loading_before_and_after_addAccount() {
         let test = makeSut()
         let sut = test.sut
         let loadingViewSpy = test.loadingViewSpy
+        let addAccountSpy = test.addAccountSpy
         
+        //BEFORE addAccount
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         loadingViewSpy.observer { viewModel in
             XCTAssertEqual(viewModel, LoadingViewModel(isLoading: true ))
             exp.fulfill()
         }
         sut.signUp(viewModel: makeSignupViewModel())
-        
         wait(for: [exp], timeout: 1)
+        
+        //AFTER addAccount
+        let exp2 = expectation(description: "completion to add remote account should response until 1 second")
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: false ))
+            exp2.fulfill()
+        }
+        
+        //Nesse teste poderia ser chama o completeWithAccountModel também é indiferente já que o que queremos testar é o LoadingViewModel do loadingViewSpy
+        addAccountSpy.completeWithError(.unexpected)
+        wait(for: [exp2], timeout: 1)
     }
     
     func test_signup_should_call_email_validator_with_correct_email() {
