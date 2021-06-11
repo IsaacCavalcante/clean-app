@@ -9,8 +9,8 @@ class SignupPresenterTests: XCTestCase {
         let alertViewSpy = test.alertViewSpy
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(message: "Nome é obrigatório"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Nome é obrigatório"))
             exp.fulfill()
         }
         sut.signUp(viewModel: makeSignupViewModel(name: nil))
@@ -22,8 +22,8 @@ class SignupPresenterTests: XCTestCase {
         let sut = test.sut
         let alertViewSpy = test.alertViewSpy
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(message: "Email é obrigatório"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Email é obrigatório"))
             exp.fulfill()
         }
         sut.signUp(viewModel: makeSignupViewModel(email: nil))
@@ -38,8 +38,8 @@ class SignupPresenterTests: XCTestCase {
         let alertViewSpy = test.alertViewSpy
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(message: "Senha é obrigatória"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Senha é obrigatória"))
             exp.fulfill()
         }
         sut.signUp(viewModel: makeSignupViewModel(password: nil))
@@ -52,8 +52,8 @@ class SignupPresenterTests: XCTestCase {
         let alertViewSpy = test.alertViewSpy
 
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(message: "Confirmação de senha é obrigatória"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Confirmação de senha é obrigatória"))
             exp.fulfill()
         }
         sut.signUp(viewModel:  makeSignupViewModel(passwordConfirmation: nil))
@@ -66,8 +66,8 @@ class SignupPresenterTests: XCTestCase {
         let alertViewSpy = test.alertViewSpy
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(message: "Falha ao confirmar senha"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Falha ao confirmar senha"))
             exp.fulfill()
         }
         sut.signUp(viewModel:  makeSignupViewModel(passwordConfirmation: "wrong_password"))
@@ -82,8 +82,8 @@ class SignupPresenterTests: XCTestCase {
         let emailValidatorSpy = test.emailValidatorSpy
 
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(message: "Email não é válido"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Email não é válido"))
             exp.fulfill()
         }
         emailValidatorSpy.simulateEmailValidation(to: false)
@@ -98,8 +98,8 @@ class SignupPresenterTests: XCTestCase {
         let addAccountSpy = test.addAccountSpy
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(title: "Error", message: "Algo inesperado aconteceu. Tente novamente em alguns instantes"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(title: "Error", message: "Algo inesperado aconteceu. Tente novamente em alguns instantes"))
             exp.fulfill()
         }
         sut.signUp(viewModel: makeSignupViewModel())
@@ -114,8 +114,8 @@ class SignupPresenterTests: XCTestCase {
         let addAccountSpy = test.addAccountSpy
         
         let exp = expectation(description: "completion to add remote account should response until 1 second")
-        alertViewSpy.observer { [weak self] viewModel in
-            XCTAssertEqual(viewModel, self?.makeAlertViewModel(title: "Sucesso", message: "Conta criada com sucesso"))
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(title: "Sucesso", message: "Conta criada com sucesso"))
             exp.fulfill()
         }
         sut.signUp(viewModel: makeSignupViewModel())
