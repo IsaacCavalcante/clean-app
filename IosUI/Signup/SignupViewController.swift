@@ -20,3 +20,10 @@ extension SignupViewController: LoadingView {
         }
     }    
 }
+
+extension SignupViewController: AlertView {
+    func showMessage(viewModel: AlertViewModel) {
+        
+    }
+    
+}
