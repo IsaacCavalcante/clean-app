@@ -4,9 +4,21 @@ import Presentation
 class SignupViewController: UIViewController {
 
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var signupButton: UIButton!
+    
+    var signUp: ((SignupViewModel) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
+    }
+    
+    private func configure() {
+        signupButton?.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func signupButtonTapped() {
+        signUp?(SignupViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
     }
 
 }
