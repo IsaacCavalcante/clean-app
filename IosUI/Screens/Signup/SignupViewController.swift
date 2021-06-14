@@ -1,7 +1,7 @@
 import UIKit
 import Presentation
 
-class SignupViewController: UIViewController {
+final class SignupViewController: UIViewController, Storyboarded {
 
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var signupButton: UIButton!

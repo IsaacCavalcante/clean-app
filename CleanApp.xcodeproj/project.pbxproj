@@ -38,6 +38,7 @@
 		94733718266911DD008F47D4 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		947503A226779FE100E796C4 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947503A126779FE100E796C4 /* TestExtensions.swift */; };
 		947503A62677A5A300E796C4 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947503A52677A5A300E796C4 /* UIViewControllerExtension.swift */; };
+		947503A82677B6FF00E796C4 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947503A72677B6FF00E796C4 /* Storyboarded.swift */; };
 		9475A70B267121C900EEF068 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A70A267121C900EEF068 /* UseCasesIntegrationTests.swift */; };
 		9475A70D267121C900EEF068 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE3D2672893F00267893 /* SignupPresenter.swift */; };
@@ -58,6 +59,7 @@
 		94A7482B2673FB220066AC0A /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A748292673F8320066AC0A /* SignupStoryboard.storyboard */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
+		94EF1E0A2677BEBE004E81C8 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947503A72677B6FF00E796C4 /* Storyboarded.swift */; };
 		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94F2CA6D266EAE5500770226 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */; };
 		94F2CA6F266EAEB200770226 /* DataTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6E266EAEB200770226 /* DataTestFactories.swift */; };
@@ -226,6 +228,7 @@
 		94733717266911DD008F47D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947503A126779FE100E796C4 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		947503A52677A5A300E796C4 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		947503A72677B6FF00E796C4 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		9475A708267121C900EEF068 /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9475A70A267121C900EEF068 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; };
 		9475A70C267121C900EEF068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -601,6 +604,7 @@
 		947503A42677A56900E796C4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				947503A72677B6FF00E796C4 /* Storyboarded.swift */,
 				947503A52677A5A300E796C4 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
@@ -1202,6 +1206,7 @@
 			files = (
 				947503A62677A5A300E796C4 /* UIViewControllerExtension.swift in Sources */,
 				94A748272673F7600066AC0A /* SignupViewController.swift in Sources */,
+				947503A82677B6FF00E796C4 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1212,6 +1217,7 @@
 				94A748282673F7D50066AC0A /* SignupViewController.swift in Sources */,
 				947503A226779FE100E796C4 /* TestExtensions.swift in Sources */,
 				94A748172673F0590066AC0A /* SignupViewControllerTests.swift in Sources */,
+				94EF1E0A2677BEBE004E81C8 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
