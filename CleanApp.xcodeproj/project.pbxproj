@@ -37,6 +37,7 @@
 		94733716266911DD008F47D4 /* RemoteAddAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94733715266911DD008F47D4 /* RemoteAddAccountTests.swift */; };
 		94733718266911DD008F47D4 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		947503A226779FE100E796C4 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947503A126779FE100E796C4 /* TestExtensions.swift */; };
+		947503A62677A5A300E796C4 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947503A52677A5A300E796C4 /* UIViewControllerExtension.swift */; };
 		9475A70B267121C900EEF068 /* UseCasesIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9475A70A267121C900EEF068 /* UseCasesIntegrationTests.swift */; };
 		9475A70D267121C900EEF068 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9473370126691156008F47D4 /* Data.framework */; };
 		948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE3D2672893F00267893 /* SignupPresenter.swift */; };
@@ -224,6 +225,7 @@
 		94733715266911DD008F47D4 /* RemoteAddAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountTests.swift; sourceTree = "<group>"; };
 		94733717266911DD008F47D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947503A126779FE100E796C4 /* TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
+		947503A52677A5A300E796C4 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		9475A708267121C900EEF068 /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9475A70A267121C900EEF068 /* UseCasesIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesIntegrationTests.swift; sourceTree = "<group>"; };
 		9475A70C267121C900EEF068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -588,6 +590,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		947503A32677A55E00E796C4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				947503A42677A56900E796C4 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		947503A42677A56900E796C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				947503A52677A5A300E796C4 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		9475A709267121C900EEF068 /* UseCasesIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +651,7 @@
 		94A7480A2673F0590066AC0A /* IosUI */ = {
 			isa = PBXGroup;
 			children = (
+				947503A32677A55E00E796C4 /* Helpers */,
 				9475039D26779E9B00E796C4 /* Screens */,
 				94A7480C2673F0590066AC0A /* Info.plist */,
 			);
@@ -1181,6 +1200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947503A62677A5A300E796C4 /* UIViewControllerExtension.swift in Sources */,
 				94A748272673F7600066AC0A /* SignupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

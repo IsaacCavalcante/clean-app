@@ -19,6 +19,7 @@ class SignupViewController: UIViewController {
     
     private func configure() {
         signupButton?.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+        hideKeyboardOnTap()
     }
     
     @objc private func signupButtonTapped() {
