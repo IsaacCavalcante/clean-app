@@ -25,7 +25,9 @@ public final class SignupViewController: UIViewController, Storyboarded {
     @objc private func signupButtonTapped() {
         signUp?(SignupViewModel(name: nameTextField.text, email: emailTextField.text, password: passwordTextField.text, passwordConfirmation: passwordConfirmationTextField.text))
     }
-
+    @IBAction func SigupButtonTapped(_ sender: UIButton) {
+    }
+    
 }
 
 extension SignupViewController: LoadingView {
