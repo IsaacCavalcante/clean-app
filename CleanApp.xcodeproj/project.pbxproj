@@ -554,6 +554,30 @@
 			path = DataTests;
 			sourceTree = "<group>";
 		};
+		9475039D26779E9B00E796C4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				94A748252673F7280066AC0A /* Signup */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9475039E26779EA500E796C4 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				94A748162673F0590066AC0A /* SignupViewControllerTests.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		9475039F26779EB300E796C4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9475039E26779EA500E796C4 /* Signup */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		9475A709267121C900EEF068 /* UseCasesIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,7 +623,7 @@
 		94A7480A2673F0590066AC0A /* IosUI */ = {
 			isa = PBXGroup;
 			children = (
-				94A748252673F7280066AC0A /* Signup */,
+				9475039D26779E9B00E796C4 /* Screens */,
 				94A7480C2673F0590066AC0A /* Info.plist */,
 			);
 			path = IosUI;
@@ -608,7 +632,7 @@
 		94A748152673F0590066AC0A /* IosUITests */ = {
 			isa = PBXGroup;
 			children = (
-				94A748162673F0590066AC0A /* SignupViewControllerTests.swift */,
+				9475039F26779EB300E796C4 /* Screens */,
 				94A748182673F0590066AC0A /* Info.plist */,
 			);
 			path = IosUITests;
