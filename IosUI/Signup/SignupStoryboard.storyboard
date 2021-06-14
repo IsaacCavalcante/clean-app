@@ -29,19 +29,55 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Confirmation" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y2x-oY-OXS">
+                                <rect key="frame" x="30" y="778" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MK1-3p-aiM">
+                                <rect key="frame" x="30" y="724" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Z-HX-ldo">
+                                <rect key="frame" x="30" y="670" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-B8-cVl">
+                                <rect key="frame" x="30" y="616" width="354" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y2x-oY-OXS" secondAttribute="trailing" constant="30" id="0af-uU-WnP"/>
+                            <constraint firstItem="MK1-3p-aiM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="2bs-qq-rgR"/>
+                            <constraint firstItem="y2x-oY-OXS" firstAttribute="top" secondItem="MK1-3p-aiM" secondAttribute="bottom" constant="20" id="57m-2b-cGJ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="4IU-B8-cVl" secondAttribute="trailing" constant="30" id="5C1-nh-h7B"/>
+                            <constraint firstItem="y2x-oY-OXS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="6eU-R6-Hix"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Q4Z-HX-ldo" secondAttribute="trailing" constant="30" id="6tP-vX-OPS"/>
+                            <constraint firstItem="Q4Z-HX-ldo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="CdQ-0L-VNU"/>
+                            <constraint firstItem="MK1-3p-aiM" firstAttribute="top" secondItem="Q4Z-HX-ldo" secondAttribute="bottom" constant="20" id="GD5-nN-p0W"/>
+                            <constraint firstItem="yhI-Rn-oDz" firstAttribute="top" secondItem="y2x-oY-OXS" secondAttribute="bottom" constant="20" id="R7z-Gw-NzI"/>
                             <constraint firstItem="G23-yM-7sJ" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="XKg-YJ-OFZ"/>
                             <constraint firstItem="G23-yM-7sJ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="b7P-bL-lSa"/>
+                            <constraint firstItem="Q4Z-HX-ldo" firstAttribute="top" secondItem="4IU-B8-cVl" secondAttribute="bottom" constant="20" id="bV3-FS-wKM"/>
+                            <constraint firstItem="4IU-B8-cVl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="fTs-Ki-GiA"/>
                             <constraint firstItem="yhI-Rn-oDz" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="gAC-zO-auV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="MK1-3p-aiM" secondAttribute="trailing" constant="30" id="r1V-w8-hWl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yhI-Rn-oDz" secondAttribute="trailing" constant="30" id="v4G-Gq-aDd"/>
                             <constraint firstItem="yhI-Rn-oDz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="yFH-Zg-AtF"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="Q4Z-HX-ldo" id="6jv-au-a7I"/>
                         <outlet property="loadingIndicator" destination="G23-yM-7sJ" id="p0S-PB-VjJ"/>
+                        <outlet property="nameTextField" destination="4IU-B8-cVl" id="OCR-Lb-WCU"/>
+                        <outlet property="passwordConfirmationTextField" destination="y2x-oY-OXS" id="Nq0-16-zv3"/>
+                        <outlet property="passwordTextField" destination="MK1-3p-aiM" id="GRA-61-zTy"/>
                         <outlet property="signupButton" destination="yhI-Rn-oDz" id="MNN-RZ-CQf"/>
                     </connections>
                 </viewController>
