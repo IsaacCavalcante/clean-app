@@ -54,7 +54,7 @@
 		94A7482A2673F8320066AC0A /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A748292673F8320066AC0A /* SignupStoryboard.storyboard */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
-		94CAAC4C2679303800F3FB73 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CAAC4B2679303800F3FB73 /* Enviroment.swift */; };
+		94CAAC4C2679303800F3FB73 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CAAC4B2679303800F3FB73 /* Environment.swift */; };
 		94EF1E192677C5DC004E81C8 /* Validation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94EF1E102677C5DC004E81C8 /* Validation.framework */; };
 		94EF1E1E2677C5DC004E81C8 /* EmailValidatorAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF1E1D2677C5DC004E81C8 /* EmailValidatorAdapterTests.swift */; };
 		94EF1E272677C7F6004E81C8 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 946CC7DC267153C100D42FDD /* Presentation.framework */; };
@@ -363,7 +363,7 @@
 		94C358772670E1210023D955 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		94CAAC4926792E2200F3FB73 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		94CAAC4A26792EC800F3FB73 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		94CAAC4B2679303800F3FB73 /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		94CAAC4B2679303800F3FB73 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		94EF1E102677C5DC004E81C8 /* Validation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EF1E132677C5DC004E81C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94EF1E182677C5DC004E81C8 /* ValidationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -884,7 +884,7 @@
 			children = (
 				94CAAC4926792E2200F3FB73 /* Debug.xcconfig */,
 				94CAAC4A26792EC800F3FB73 /* Release.xcconfig */,
-				94CAAC4B2679303800F3FB73 /* Enviroment.swift */,
+				94CAAC4B2679303800F3FB73 /* Environment.swift */,
 			);
 			path = Env;
 			sourceTree = "<group>";
@@ -1635,7 +1635,7 @@
 			files = (
 				94EF1E862677E70E004E81C8 /* UseCaseFactory.swift in Sources */,
 				94EF1E892677E85E004E81C8 /* SignupComposer.swift in Sources */,
-				94CAAC4C2679303800F3FB73 /* Enviroment.swift in Sources */,
+				94CAAC4C2679303800F3FB73 /* Environment.swift in Sources */,
 				94EF1E362677CEA3004E81C8 /* AppDelegate.swift in Sources */,
 				94EF1E902677FA72004E81C8 /* WeakVarProxy.swift in Sources */,
 				94EF1E382677CEA3004E81C8 /* SceneDelegate.swift in Sources */,

@@ -1,12 +1,12 @@
 import Foundation
 
-public final class Enviroment {
+public final class Environment {
     
-    public enum EnviromentVariable: String {
+    public enum EnvironmentVariable: String {
         case apiBaseUrl = "API_BASE_URL"
     }
     
-    public static func variable(_ key: EnviromentVariable) -> String {
+    public static func variable(_ key: EnvironmentVariable) -> String {
         return Bundle.main.infoDictionary![key.rawValue] as! String
     }
 }
