@@ -1,10 +1,3 @@
-//
-//  TestFactories.swift
-//  PresentationTests
-//
-//  Created by monitora on 11/06/21.
-//
-
 import Foundation
 import Presentation
 

@@ -23,12 +23,14 @@ public final class SignupPresenter {
             addAccount.add(addAccountModel: SignupMapper.toAccountMode(viewModel: viewModel), completion: { [weak self] result in
                 guard let self = self else { return }
                 
+                self.loadingView.display(viewModel: LoadingViewModel(isLoading: false))
+                
                 switch result {
                 case .failure: self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Algo inesperado aconteceu. Tente novamente em alguns instantes"))
                 case .success: self.alertView.showMessage(viewModel: AlertViewModel(title: "Sucesso", message: "Conta criada com sucesso"))
                 }
                 
-                self.loadingView.display(viewModel: LoadingViewModel(isLoading: false))
+                
             })
         }
     }

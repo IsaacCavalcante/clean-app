@@ -86,6 +86,7 @@
 		94EF1E8C2677F5B7004E81C8 /* AddAccountSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942134582673E38000119EB0 /* AddAccountSpy.swift */; };
 		94EF1E8D2677F60B004E81C8 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94EF1E902677FA72004E81C8 /* WeakVarProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF1E8F2677FA72004E81C8 /* WeakVarProxy.swift */; };
+		94EFE44D267A8689005FB84F /* PresentationTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A748002673E7640066AC0A /* PresentationTestFactories.swift */; };
 		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94F2CA6D266EAE5500770226 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */; };
 		94F2CA6F266EAEB200770226 /* DataTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6E266EAEB200770226 /* DataTestFactories.swift */; };
@@ -1656,6 +1657,7 @@
 			files = (
 				94EF1E8C2677F5B7004E81C8 /* AddAccountSpy.swift in Sources */,
 				94EF1E8D2677F60B004E81C8 /* XCTestCaseExtension.swift in Sources */,
+				94EFE44D267A8689005FB84F /* PresentationTestFactories.swift in Sources */,
 				94EF1E8B2677F4F7004E81C8 /* SignupComposerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
