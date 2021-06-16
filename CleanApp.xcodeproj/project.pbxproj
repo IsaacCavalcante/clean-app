@@ -87,6 +87,7 @@
 		94EF1E8D2677F60B004E81C8 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94EF1E902677FA72004E81C8 /* WeakVarProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF1E8F2677FA72004E81C8 /* WeakVarProxy.swift */; };
 		94EFE44D267A8689005FB84F /* PresentationTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A748002673E7640066AC0A /* PresentationTestFactories.swift */; };
+		94EFE450267A93F0005FB84F /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EFE44F267A93F0005FB84F /* MainQueueDispatchDecorator.swift */; };
 		94F2CA6A266EADE500770226 /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		94F2CA6D266EAE5500770226 /* HttpClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */; };
 		94F2CA6F266EAEB200770226 /* DataTestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA6E266EAEB200770226 /* DataTestFactories.swift */; };
@@ -383,6 +384,7 @@
 		94EF1E882677E85E004E81C8 /* SignupComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupComposer.swift; sourceTree = "<group>"; };
 		94EF1E8A2677F4F7004E81C8 /* SignupComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupComposerTests.swift; sourceTree = "<group>"; };
 		94EF1E8F2677FA72004E81C8 /* WeakVarProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakVarProxy.swift; sourceTree = "<group>"; };
+		94EFE44F267A93F0005FB84F /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtension.swift; sourceTree = "<group>"; };
 		94F2CA6C266EAE5500770226 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
 		94F2CA6E266EAEB200770226 /* DataTestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestFactories.swift; sourceTree = "<group>"; };
@@ -911,6 +913,7 @@
 		94EF1E342677CEA3004E81C8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				94EFE44E267A93D7005FB84F /* Decorators */,
 				94CAAC4826792D9D00F3FB73 /* Env */,
 				94EF1E8E2677FA55004E81C8 /* Proxies */,
 				94EF1E872677E84C004E81C8 /* Composers */,
@@ -963,6 +966,14 @@
 				94EF1E8A2677F4F7004E81C8 /* SignupComposerTests.swift */,
 			);
 			path = Composers;
+			sourceTree = "<group>";
+		};
+		94EFE44E267A93D7005FB84F /* Decorators */ = {
+			isa = PBXGroup;
+			children = (
+				94EFE44F267A93F0005FB84F /* MainQueueDispatchDecorator.swift */,
+			);
+			path = Decorators;
 			sourceTree = "<group>";
 		};
 		94F2CA67266EADBB00770226 /* Helpers */ = {
@@ -1643,6 +1654,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94EF1E862677E70E004E81C8 /* UseCaseFactory.swift in Sources */,
+				94EFE450267A93F0005FB84F /* MainQueueDispatchDecorator.swift in Sources */,
 				94EF1E892677E85E004E81C8 /* SignupComposer.swift in Sources */,
 				94CAAC4C2679303800F3FB73 /* Environment.swift in Sources */,
 				94EF1E362677CEA3004E81C8 /* AppDelegate.swift in Sources */,
