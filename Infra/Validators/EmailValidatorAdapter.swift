@@ -1,5 +1,5 @@
 import Foundation
-import Presentation
+import Validation
 
 public final class EmailValidatorAdapter: EmailValidator {
     public init() {}

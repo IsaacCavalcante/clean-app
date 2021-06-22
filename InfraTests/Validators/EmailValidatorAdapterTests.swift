@@ -1,5 +1,5 @@
 import XCTest
-import Presentation
+import Infra
 
 class EmailValidatorAdapterTests: XCTestCase {
     func test_invalid_emails() throws {
@@ -23,7 +23,7 @@ class EmailValidatorAdapterTests: XCTestCase {
 }
 
 extension EmailValidatorAdapterTests {
-    func makeSut() -> EmailValidator {
+    func makeSut() -> EmailValidatorAdapter {
         let sut = EmailValidatorAdapter()
         return sut
     }
