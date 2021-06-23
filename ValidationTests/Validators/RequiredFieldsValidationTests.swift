@@ -30,6 +30,13 @@ class RequiredFieldsValidationTests: XCTestCase {
         let errorMessage = sut.validate(data: nil)
         XCTAssertEqual(errorMessage, "O campo Email é obrigatório")
     }
+    
+    func test_validate_should_return_error_if_value_of_field_is_empty() {
+        let sut = makeSut(fieldName: "name", fieldLabel: "Nome")
+        
+        let errorMessage = sut.validate(data: ["name": ""])
+        XCTAssertEqual(errorMessage, "O campo Nome é obrigatório")
+    }
 }
 
 extension RequiredFieldsValidationTests {
