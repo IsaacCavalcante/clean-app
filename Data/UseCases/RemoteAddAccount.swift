@@ -22,11 +22,16 @@ public final class RemoteAddAccount: AddAccount {
                 if let model: AccountModel = data?.toModel() {
                     completion(.success(model))
                     break
-                     
                 }
                 completion(.failure(.invalidData))
 
-            case .failure(_): completion(.failure(.unexpected))
+            case .failure(let error):
+                switch error {
+                case .forbidden:
+                    completion(.failure(.emailInUse))
+                default:
+                    completion(.failure(.unexpected))
+                }
             }
         }
     }

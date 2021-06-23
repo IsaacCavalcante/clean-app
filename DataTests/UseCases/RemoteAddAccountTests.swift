@@ -26,6 +26,12 @@ class DataTests: XCTestCase {
         expect(sut.principal, exp, completeWith: .failure(.unexpected), when: { sut.httpClientSpy.completionWithError(.noConnectivity) })
     }
     
+    func test_add_should_complete_with_email_in_use_if_client_completes_with_forbidden() throws {
+        let sut = makeSut()
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        expect(sut.principal, exp, completeWith: .failure(.emailInUse), when: { sut.httpClientSpy.completionWithError(.forbidden) })
+    }
+    
     func test_add_should_complete_with_account_if_client_completes_with_valid_data() throws {
         let sut = makeSut()
         let expectedAccount = makeAccountModel()
