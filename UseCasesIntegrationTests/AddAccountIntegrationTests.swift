@@ -9,7 +9,7 @@ class AddAccountIntegrationTests: XCTestCase {
         let url = URL(string: "http://localhost:5050/api/signup")!
         let sut = RemoteAddAccount(url: url, httpClient: alamofireAdapter)
         //obs: Sempre rodar o servidor (https://github.com/rmanguinho/clean-ts-api) e trocar o email abaixo para resultar em sucesso
-        let addAccountModel = AddAccountModel(name: "Isaac Cavalcante", email: "isaac.cavalcante30000@monitoratec.com.br", password: "password", passwordConfirmation: "password")
+        let addAccountModel = AddAccountModel(name: "Isaac Cavalcante", email: "isaac.cavalcante4@monitoratec.com.br", password: "password", passwordConfirmation: "password")
         let exp = expectation(description: "Should response until 5 seconds")
         sut.add(addAccountModel: addAccountModel) { result in
             switch result {
