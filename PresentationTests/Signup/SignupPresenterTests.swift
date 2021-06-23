@@ -4,7 +4,7 @@ import Domain
 
 class SignupPresenterTests: XCTestCase {
     
-    func test_signup_should_show_error_message_if_addAccount_fails() {
+    func test_signup_should_show_generic_error_message_if_addAccount_fails() {
         let test = makeSut()
         let sut = test.sut
         let alertViewSpy = test.alertViewSpy
@@ -17,6 +17,22 @@ class SignupPresenterTests: XCTestCase {
         }
         sut.signUp(viewModel: makeSignupViewModel())
         addAccountSpy.completeWithError(.unexpected)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_signup_should_show_email_in_use_error_message_if_addAccount_returns_email_in_use_error() {
+        let test = makeSut()
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let addAccountSpy = test.addAccountSpy
+        
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(title: "Error", message: "Esse email já está em uso"))
+            exp.fulfill()
+        }
+        sut.signUp(viewModel: makeSignupViewModel())
+        addAccountSpy.completeWithError(.emailInUse)
         wait(for: [exp], timeout: 1)
     }
     
