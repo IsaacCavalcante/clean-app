@@ -52,7 +52,7 @@
 		<key>UseCasesIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>9</integer>
 		</dict>
 		<key>Validation.xcscheme_^#shared#^_</key>
 		<dict>
@@ -72,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>946CC7DB267153C100D42FDD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>947336EF26690583008F47D4</key>
 		<dict>
 			<key>primary</key>
@@ -83,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>94733712266911DD008F47D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9475A707267121C900EEF068</key>
 		<dict>
 			<key>primary</key>
 			<true/>
