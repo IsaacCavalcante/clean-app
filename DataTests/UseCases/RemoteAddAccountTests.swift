@@ -48,9 +48,9 @@ class DataTests: XCTestCase {
     func test_add_should_not_complete_with_error_if_sut_has_been_deallocated() throws {
         let httpClientSpy = HttpClientSpy()
         var sut: RemoteAddAccount? = RemoteAddAccount(url: makeUrl(), httpClient: httpClientSpy)
-        var result: Result<AccountModel, DomainError>?
+        var result: AddAccount.Result?
 
-        //aqui é atribuído a result o primeiro parâmetro de completion to tipo Result<AccountModel, DomainError>
+        //aqui é atribuído a result o primeiro parâmetro de completion to tipo Result<AccountModel, DomainError> aka AddAccount.Result
         sut?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
         
         //ao definir sut como nil, simulamos que houve um comportamento inesperado (como o usuário não esperar a request e sair da tela) e a instância de RemoteAddAccount acabou sendo desalocada da memória
@@ -75,7 +75,7 @@ extension DataTests {
         return (principal: sut, url: url, httpClientSpy: httpClientSpy)
     }
     
-    func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    func expect(_ sut: RemoteAddAccount, _ exp: XCTestExpectation, completeWith expectedResult: AddAccount.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         
         sut.add(addAccountModel: makeAddAccountModel()) { receivedResult  in
             switch (receivedResult, expectedResult) {
