@@ -9,6 +9,11 @@ class SigninViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         XCTAssertEqual(sut.loadingIndicator?.isAnimating, false)
     }
+    
+    func test_sut_implements_loadingview_protocol() {
+        let sut = makeSut()
+        XCTAssertNotNil(sut as LoadingView)
+    }
 }
 
 extension SigninViewControllerTests {

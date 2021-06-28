@@ -17,3 +17,15 @@ public final class SigninViewController: UIViewController, Storyboarded {
         hideKeyboardOnTap()
     }
 }
+
+extension SigninViewController: LoadingView {
+    public func display(viewModel: LoadingViewModel) {
+        if(viewModel.isLoading) {
+            view.isUserInteractionEnabled = false
+            loadingIndicator.startAnimating()
+        } else {
+            view.isUserInteractionEnabled = true
+            loadingIndicator.stopAnimating()
+        }
+    } 
+}
