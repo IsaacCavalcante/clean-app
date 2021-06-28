@@ -27,16 +27,27 @@ class SigninPresenterTests: XCTestCase {
         sut.signIn(viewModel: makeSigninViewModel())
         wait(for: [exp], timeout: 1)
     }
+    
+    func test_signup_should_calls_auth_with_correct_values() {
+        let test = makeSut()
+        let sut = test.sut
+        let authenticationSpy = test.authenticationSpy
+        
+        sut.signIn(viewModel: makeSigninViewModel())
+        
+        XCTAssertEqual(authenticationSpy.authenticationModel, makeAuthenticationModel())
+    }
 }
 
 
 extension SigninPresenterTests {
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SigninPresenter, alertViewSpy: AlertViewSpy, validationSpy: ValidationSpy) {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SigninPresenter, alertViewSpy: AlertViewSpy, validationSpy: ValidationSpy, authenticationSpy: AuthenticationSpy) {
         let validationSpy = ValidationSpy()
         let alertViewSpy = AlertViewSpy()
-        let sut = SigninPresenter(validation: validationSpy, alertView: alertViewSpy)
+        let authenticationSpy = AuthenticationSpy()
+        let sut = SigninPresenter(validation: validationSpy, alertView: alertViewSpy, authentication: authenticationSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         
-        return (sut, alertViewSpy, validationSpy)
+        return (sut, alertViewSpy, validationSpy, authenticationSpy)
     }
 }
