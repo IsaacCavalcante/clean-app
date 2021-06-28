@@ -25,6 +25,12 @@ class RemoteAuthenticationTests: XCTestCase {
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         expect(sut.principal, exp, completeWith: .failure(.unexpected), when: { sut.httpClientSpy.completionWithError(.noConnectivity) })
     }
+    
+    func test_add_should_complete_with_email_in_use_if_client_completes_with_unauthorized() throws {
+        let sut = makeSut()
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        expect(sut.principal, exp, completeWith: .failure(.sessionExpired), when: { sut.httpClientSpy.completionWithError(.unauthorized) })
+    }
 }
 
 extension RemoteAuthenticationTests {

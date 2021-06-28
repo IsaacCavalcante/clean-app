@@ -16,7 +16,13 @@ public final class RemoteAuthentication {
             
             switch result{
             case .success: break
-            case .failure: completion(.failure(.unexpected))
+            case .failure(let error):
+                switch error {
+                case .unauthorized:
+                    completion(.failure(.sessionExpired))
+                default:
+                    completion(.failure(.unexpected))
+                }
             }
         }
     }
