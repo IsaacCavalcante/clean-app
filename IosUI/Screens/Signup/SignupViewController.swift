@@ -18,6 +18,8 @@ public final class SignupViewController: UIViewController, Storyboarded {
     }
     
     private func configure() {
+        title = "IDevs"
+        signupButton?.layer.cornerRadius = 5
         signupButton?.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         hideKeyboardOnTap()
     }
