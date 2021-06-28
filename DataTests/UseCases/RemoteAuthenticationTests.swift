@@ -6,10 +6,18 @@ class RemoteAuthenticationTests: XCTestCase {
 
     func test_add_should_call_httpClient_with_correct_url() throws {
         let (sut, url, httpClientSpy) = makeSut()
-        sut.auth()
+        sut.auth(authenticationModel: makeAuthenticationModel())
         
         XCTAssertEqual(httpClientSpy.url, url, "Url send to httpClient is wrong")
         XCTAssertEqual(httpClientSpy.callsCounter, 1, "post method from HttpClient called more than once")
+    }
+    
+    func test_add_should_call_httpClient_with_correct_data() throws {
+        let sut = makeSut()
+        let authenticationModel = makeAuthenticationModel()
+        sut.principal.auth(authenticationModel: authenticationModel)
+        
+        XCTAssertEqual(sut.httpClientSpy.data, authenticationModel.toData(), "Data from to httpClient is wrong")
     }
 }
 
