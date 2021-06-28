@@ -2,7 +2,7 @@ import XCTest
 import Domain
 import Data
 
-class DataTests: XCTestCase {
+class RemoteAddAccountTests: XCTestCase {
 
     func test_add_should_call_httpClient_with_correct_url() throws {
         let (sut, url, httpClientSpy) = makeSut()
@@ -61,7 +61,7 @@ class DataTests: XCTestCase {
     }
 }
 
-extension DataTests {
+extension RemoteAddAccountTests {
     
     //Já que muitos métodos chamam makeSut fica difícil saber em qual teste o erro ocorreu, os parâmetros file e line são usados para que os erros apareçam onde os métodos foram chamados no teste ao invés de aparecer em makeSut
     func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (principal: RemoteAddAccount, url: URL, httpClientSpy: HttpClientSpy){
