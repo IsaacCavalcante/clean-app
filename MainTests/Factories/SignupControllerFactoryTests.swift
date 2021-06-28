@@ -7,7 +7,7 @@ import IosUI
 import Validation
 
 class SignupControllerFactoryTests: XCTestCase {
-    func test_backgorund_request_should_complete_on_main_thread() {
+    func test_background_request_should_complete_on_main_thread() {
 //        debugPrint("===============================")
 //        debugPrint(Environment.variable(.apiBaseUrl))
 //        debugPrint("===============================")
