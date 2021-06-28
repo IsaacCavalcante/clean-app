@@ -38,6 +38,12 @@ class RemoteAuthenticationTests: XCTestCase {
         let exp = expectation(description: "completion to add remote account should response until 1 second")
         expect(sut.principal, exp, completeWith: .success(expectedAccount), when: { sut.httpClientSpy.completionWithData(expectedAccount.toData()!) })
     }
+    
+    func test_add_should_complete_with_error_if_client_completes_with_invalid_data() throws {
+        let sut = makeSut()
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(makeInvalidData()) })
+    }
 }
 
 extension RemoteAuthenticationTests {

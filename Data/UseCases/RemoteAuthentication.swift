@@ -18,7 +18,9 @@ public final class RemoteAuthentication {
             case .success(let data):
                 if let model: AccountModel = data?.toModel() {
                     completion(.success(model))
+                    break
                 }
+                completion(.failure(.invalidData))
                 
             case .failure(let error):
                 switch error {
