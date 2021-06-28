@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Signin View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SigninViewController" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SigninViewController" id="Y6W-OH-hqX" customClass="SigninViewController" customModule="IosUI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,10 +87,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="Q4Z-HX-ldo" id="6jv-au-a7I"/>
-                        <outlet property="loadingIndicator" destination="G23-yM-7sJ" id="p0S-PB-VjJ"/>
-                        <outlet property="passwordTextField" destination="MK1-3p-aiM" id="GRA-61-zTy"/>
-                        <outlet property="signupButton" destination="yhI-Rn-oDz" id="MNN-RZ-CQf"/>
+                        <outlet property="loadingIndicator" destination="G23-yM-7sJ" id="O4J-ZC-Fp1"/>
+                        <outlet property="signinButton" destination="yhI-Rn-oDz" id="O8T-bg-vWb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
