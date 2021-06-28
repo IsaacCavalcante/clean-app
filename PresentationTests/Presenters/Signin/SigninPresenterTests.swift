@@ -86,17 +86,42 @@ class SigninPresenterTests: XCTestCase {
         
         wait(for: [exp], timeout: 1)
     }
+    
+    func test_signin_should_show_loading_before_and_after_auth() {
+        let test = makeSut()
+        let sut = test.sut
+        let loadingViewSpy = test.loadingViewSpy
+        let authenticationSpy = test.authenticationSpy
+        
+        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: true ))
+            exp.fulfill()
+        }
+        sut.signIn(viewModel: makeSigninViewModel())
+        wait(for: [exp], timeout: 1)
+        
+        let exp2 = expectation(description: "completion to add remote account should response until 1 second")
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: false ))
+            exp2.fulfill()
+        }
+        
+        authenticationSpy.completeWithError(.unexpected)
+        wait(for: [exp2], timeout: 1)
+    }
 }
 
 
 extension SigninPresenterTests {
-    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SigninPresenter, alertViewSpy: AlertViewSpy, validationSpy: ValidationSpy, authenticationSpy: AuthenticationSpy) {
+    func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SigninPresenter, alertViewSpy: AlertViewSpy, loadingViewSpy: LoadingViewSpy, validationSpy: ValidationSpy, authenticationSpy: AuthenticationSpy) {
         let validationSpy = ValidationSpy()
         let alertViewSpy = AlertViewSpy()
+        let loadingViewSpy = LoadingViewSpy()
         let authenticationSpy = AuthenticationSpy()
-        let sut = SigninPresenter(validation: validationSpy, alertView: alertViewSpy, authentication: authenticationSpy)
+        let sut = SigninPresenter(alertView: alertViewSpy, validation: validationSpy, authentication: authenticationSpy, loadingView: loadingViewSpy)
         checkMemoryLeak(for: sut, file: file, line: line)
         
-        return (sut, alertViewSpy, validationSpy, authenticationSpy)
+        return (sut, alertViewSpy, loadingViewSpy, validationSpy, authenticationSpy)
     }
 }
