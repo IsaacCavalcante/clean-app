@@ -5,6 +5,10 @@ func makeSignupViewModel(name: String? = "Isaac Cavalcante", email: String? = "a
     return SignupViewModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
 }
 
+func makeSigninViewModel(email: String? = "any@mail.com", password: String? = "password") -> SigninViewModel {
+    return SigninViewModel(email: email, password: password)
+}
+
 func makeAlertViewModel(title: String? = "Falha na validação", message: String? = "Falha na validação") -> AlertViewModel {
     return AlertViewModel(title: title!, message: message!)
 }
