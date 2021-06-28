@@ -14,6 +14,11 @@ class SigninViewControllerTests: XCTestCase {
         let sut = makeSut()
         XCTAssertNotNil(sut as LoadingView)
     }
+    
+    func test_sut_implements_alertview_protocol() {
+        let sut = makeSut()
+        XCTAssertNotNil(sut as AlertView)
+    }
 }
 
 extension SigninViewControllerTests {
