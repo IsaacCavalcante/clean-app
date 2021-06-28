@@ -20,8 +20,15 @@ public final class SigninPresenter {
                 guard let self = self else { return }
                 
                 switch result {
-                case .failure:
-                    self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: "Algo inesperado aconteceu. Tente novamente em alguns instantes"))
+                case .failure(let error):
+                    var errorMessage = "Algo inesperado aconteceu. Tente novamente em alguns instantes"
+                    switch error {
+                    case .sessionExpired:
+                        errorMessage = "Autenticação de usuário falhou"
+                    default:
+                        break
+                    }
+                    self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: errorMessage))
                 case .success: break
                 }
             }

@@ -53,6 +53,22 @@ class SigninPresenterTests: XCTestCase {
         authenticationSpy.completeWithError(.unexpected)
         wait(for: [exp], timeout: 1)
     }
+    
+    func test_signin_should_show_expired_session_error_message_if_auth_returns_expired_session() {
+        let test = makeSut()
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let authenticationSpy = test.authenticationSpy
+        
+        let exp = expectation(description: "completion to autg remote account should response until 1 second")
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(title: "Error", message: "Autenticação de usuário falhou"))
+            exp.fulfill()
+        }
+        sut.signIn(viewModel: makeSigninViewModel())
+        authenticationSpy.completeWithError(.sessionExpired)
+        wait(for: [exp], timeout: 1)
+    }
 }
 
 
