@@ -69,6 +69,23 @@ class SigninPresenterTests: XCTestCase {
         authenticationSpy.completeWithError(.sessionExpired)
         wait(for: [exp], timeout: 1)
     }
+    
+    func test_signin_should_show_success_message_if_auth_completes_with_success() {
+        let test = makeSut()
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let authenticationSpy = test.authenticationSpy
+        
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(title: "Sucesso", message: "Login feito com sucesso"))
+            exp.fulfill()
+        }
+        sut.signIn(viewModel: makeSigninViewModel())
+        authenticationSpy.completeWithAccountModel(makeAccountModel())
+        
+        wait(for: [exp], timeout: 1)
+    }
 }
 
 

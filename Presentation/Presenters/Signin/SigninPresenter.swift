@@ -29,7 +29,7 @@ public final class SigninPresenter {
                         break
                     }
                     self.alertView.showMessage(viewModel: AlertViewModel(title: "Error", message: errorMessage))
-                case .success: break
+                case .success: self.alertView.showMessage(viewModel: AlertViewModel(title: "Sucesso", message: "Login feito com sucesso"))
                 }
             }
         }
