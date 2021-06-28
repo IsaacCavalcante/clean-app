@@ -74,6 +74,10 @@
 		94873BA5268A4CF50008F99C /* SigninViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BA4268A4CF50008F99C /* SigninViewControllerTests.swift */; };
 		94873BA7268A4DB60008F99C /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BA6268A4DB60008F99C /* SigninViewController.swift */; };
 		94873BA8268A55690008F99C /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
+		94873BAA268A714B0008F99C /* SigninControllerFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BA9268A714B0008F99C /* SigninControllerFactoryTests.swift */; };
+		94873BAB268A73900008F99C /* AuthenticationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B9E268A30970008F99C /* AuthenticationSpy.swift */; };
+		94873BAD268A8B4A0008F99C /* SigninControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BAC268A8B490008F99C /* SigninControllerFactory.swift */; };
+		94873BAF268A8F7E0008F99C /* RemoteAuthenticationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BAE268A8F7E0008F99C /* RemoteAuthenticationFactory.swift */; };
 		948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE3D2672893F00267893 /* SignupPresenter.swift */; };
 		948EBE4126728B2600267893 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; };
 		948EBE4226728B2600267893 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -417,6 +421,9 @@
 		94873BA1268A4C2F0008F99C /* SigninStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SigninStoryboard.storyboard; sourceTree = "<group>"; };
 		94873BA4268A4CF50008F99C /* SigninViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewControllerTests.swift; sourceTree = "<group>"; };
 		94873BA6268A4DB60008F99C /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		94873BA9268A714B0008F99C /* SigninControllerFactoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninControllerFactoryTests.swift; sourceTree = "<group>"; };
+		94873BAC268A8B490008F99C /* SigninControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninControllerFactory.swift; sourceTree = "<group>"; };
+		94873BAE268A8F7E0008F99C /* RemoteAuthenticationFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAuthenticationFactory.swift; sourceTree = "<group>"; };
 		948EBE3D2672893F00267893 /* SignupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPresenter.swift; sourceTree = "<group>"; };
 		948EBE4726728BF000267893 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		948EBE4B267295B200267893 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
@@ -583,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				94EF1E852677E70E004E81C8 /* RemoteAddAccountFactory.swift */,
+				94873BAE268A8F7E0008F99C /* RemoteAuthenticationFactory.swift */,
 				9414E5F02683CFF70014F2CB /* ApiUrlFactory.swift */,
 			);
 			path = Http;
@@ -601,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				94EF1E882677E85E004E81C8 /* SignupControllerFactory.swift */,
+				94873BAC268A8B490008F99C /* SigninControllerFactory.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1179,6 +1188,7 @@
 			isa = PBXGroup;
 			children = (
 				94EF1E8A2677F4F7004E81C8 /* SignupControllerFactoryTests.swift */,
+				94873BA9268A714B0008F99C /* SigninControllerFactoryTests.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1903,8 +1913,10 @@
 				94CAAC4C2679303800F3FB73 /* Environment.swift in Sources */,
 				94EF1E362677CEA3004E81C8 /* AppDelegate.swift in Sources */,
 				94EF1E902677FA72004E81C8 /* WeakVarProxy.swift in Sources */,
+				94873BAF268A8F7E0008F99C /* RemoteAuthenticationFactory.swift in Sources */,
 				9414E5F82683D37C0014F2CB /* EmailValidatorAdapterFactory.swift in Sources */,
 				94EF1E382677CEA3004E81C8 /* SceneDelegate.swift in Sources */,
+				94873BAD268A8B4A0008F99C /* SigninControllerFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1914,6 +1926,8 @@
 			files = (
 				94EF1E8C2677F5B7004E81C8 /* AddAccountSpy.swift in Sources */,
 				94EF1E8D2677F60B004E81C8 /* XCTestCaseExtension.swift in Sources */,
+				94873BAB268A73900008F99C /* AuthenticationSpy.swift in Sources */,
+				94873BAA268A714B0008F99C /* SigninControllerFactoryTests.swift in Sources */,
 				941F240926828EE7001B82FF /* EmailValidatorSpy.swift in Sources */,
 				94EFE44D267A8689005FB84F /* PresentationTestFactories.swift in Sources */,
 				94EF1E8B2677F4F7004E81C8 /* SignupControllerFactoryTests.swift in Sources */,
