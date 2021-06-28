@@ -18,7 +18,7 @@ class SigninPresenterTests: XCTestCase {
         let alertViewSpy = test.alertViewSpy
         let validationSpy = test.validationSpy
         
-        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
         alertViewSpy.observer { viewModel in
             XCTAssertEqual(viewModel, makeAlertViewModel(message: "Erro"))
             exp.fulfill()
@@ -36,6 +36,22 @@ class SigninPresenterTests: XCTestCase {
         sut.signIn(viewModel: makeSigninViewModel())
         
         XCTAssertEqual(authenticationSpy.authenticationModel, makeAuthenticationModel())
+    }
+    
+    func test_sigin_should_show_generic_error_message_if_authentication_fails() {
+        let test = makeSut()
+        let sut = test.sut
+        let alertViewSpy = test.alertViewSpy
+        let authenticationSpy = test.authenticationSpy
+        
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(title: "Error", message: "Algo inesperado aconteceu. Tente novamente em alguns instantes"))
+            exp.fulfill()
+        }
+        sut.signIn(viewModel: makeSigninViewModel())
+        authenticationSpy.completeWithError(.unexpected)
+        wait(for: [exp], timeout: 1)
     }
 }
 
