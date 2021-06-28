@@ -22,27 +22,40 @@ class RemoteAuthenticationTests: XCTestCase {
     
     func test_auth_should_complete_with_error_if_client_completes_with_error() throws {
         let sut = makeSut()
-        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
         expect(sut.principal, exp, completeWith: .failure(.unexpected), when: { sut.httpClientSpy.completionWithError(.noConnectivity) })
     }
     
-    func test_add_should_complete_with_email_in_use_if_client_completes_with_unauthorized() throws {
+    func test_auth_should_complete_with_email_in_use_if_client_completes_with_unauthorized() throws {
         let sut = makeSut()
-        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
         expect(sut.principal, exp, completeWith: .failure(.sessionExpired), when: { sut.httpClientSpy.completionWithError(.unauthorized) })
     }
     
-    func test_add_should_complete_with_account_if_client_completes_with_valid_data() throws {
+    func test_auth_should_complete_with_account_if_client_completes_with_valid_data() throws {
         let sut = makeSut()
         let expectedAccount = makeAccountModel()
-        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
         expect(sut.principal, exp, completeWith: .success(expectedAccount), when: { sut.httpClientSpy.completionWithData(expectedAccount.toData()!) })
     }
     
-    func test_add_should_complete_with_error_if_client_completes_with_invalid_data() throws {
+    func test_auth_should_complete_with_error_if_client_completes_with_invalid_data() throws {
         let sut = makeSut()
-        let exp = expectation(description: "completion to add remote account should response until 1 second")
+        let exp = expectation(description: "completion to auth remote account should response until 1 second")
         expect(sut.principal, exp, completeWith: .failure(.invalidData), when: { sut.httpClientSpy.completionWithData(makeInvalidData()) })
+    }
+    
+    func test_auth_should_not_complete_with_error_if_sut_has_been_deallocated() throws {
+        let httpClientSpy = HttpClientSpy()
+        var sut: RemoteAuthentication? = RemoteAuthentication(url: makeUrl(), httpClient: httpClientSpy)
+        var result: Authentication.Result?
+
+        sut?.auth(authenticationModel: makeAuthenticationModel()) { result = $0 }
+
+        sut = nil
+
+        httpClientSpy.completionWithError(.noConnectivity)
+        XCTAssertNil(result)
     }
 }
 
@@ -71,7 +84,6 @@ extension RemoteAuthenticationTests {
             exp.fulfill()
         }
         
-        //Aqui eu incitei a ocorrência de erro chamando o método action que é passado como parâmeto por que o ponto principal do teste é testar o caso, se eu chamasse o completion dentro do método post de HttpClientSpy deveria decidir o que responder já que haverá casos de sucessos e erros diferenciados, então os métodos completionWithError e completionWithData foram criados dentro de HttpClientSpy para forçar a resposta de erro ou acerto para a qual queremos no teste. Lembrando que o erro ou o model retornado está sendo definido dentro do método add de RemoteAddAccount
         action()
         wait(for: [exp], timeout: 1)
     }
