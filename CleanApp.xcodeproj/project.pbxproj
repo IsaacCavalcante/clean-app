@@ -73,6 +73,7 @@
 		94873BA2268A4C2F0008F99C /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94873BA1268A4C2F0008F99C /* SigninStoryboard.storyboard */; };
 		94873BA5268A4CF50008F99C /* SigninViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BA4268A4CF50008F99C /* SigninViewControllerTests.swift */; };
 		94873BA7268A4DB60008F99C /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BA6268A4DB60008F99C /* SigninViewController.swift */; };
+		94873BA8268A55690008F99C /* XCTestCaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F2CA69266EADE500770226 /* XCTestCaseExtension.swift */; };
 		948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948EBE3D2672893F00267893 /* SignupPresenter.swift */; };
 		948EBE4126728B2600267893 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; };
 		948EBE4226728B2600267893 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 947336F026690583008F47D4 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1857,6 +1858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94873BA8268A55690008F99C /* XCTestCaseExtension.swift in Sources */,
 				947503A226779FE100E796C4 /* TestExtensions.swift in Sources */,
 				94873BA5268A4CF50008F99C /* SigninViewControllerTests.swift in Sources */,
 				94A748172673F0590066AC0A /* SignupViewControllerTests.swift in Sources */,

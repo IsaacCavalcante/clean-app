@@ -87,7 +87,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="Q4Z-HX-ldo" id="cse-d6-BgL"/>
                         <outlet property="loadingIndicator" destination="G23-yM-7sJ" id="O4J-ZC-Fp1"/>
+                        <outlet property="passwordTextField" destination="MK1-3p-aiM" id="7MP-jx-oVX"/>
                         <outlet property="signinButton" destination="yhI-Rn-oDz" id="O8T-bg-vWb"/>
                     </connections>
                 </viewController>

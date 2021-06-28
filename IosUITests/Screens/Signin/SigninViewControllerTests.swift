@@ -19,13 +19,24 @@ class SigninViewControllerTests: XCTestCase {
         let sut = makeSut()
         XCTAssertNotNil(sut as AlertView)
     }
+    
+    func test_sut_signin_button_calls_sigin_on_tap() {
+        var signinViewModel: SigninViewModel?
+        let sut = makeSut(signinModel: { signinViewModel = $0 })
+        sut.loadViewIfNeeded()
+        sut.signinButton?.simulateTap()
+        let email = sut.emailTextField?.text
+        let password = sut.passwordTextField?.text
+        XCTAssertEqual(signinViewModel, SigninViewModel(email: email, password: password))
+    }
 }
 
 extension SigninViewControllerTests {
-    func makeSut() -> SigninViewController {
+    func makeSut(signinModel: ((SigninViewModel) -> Void)? = nil) -> SigninViewController {
         let sut = SigninViewController.instantiate()
+        sut.signIn = signinModel
         sut.loadViewIfNeeded()
-        
+        checkMemoryLeak(for: sut)
         return sut
     }
 }

@@ -4,7 +4,11 @@ import Presentation
 public final class SigninViewController: UIViewController, Storyboarded {
 
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emailTextField: RoundedTextField!
+    @IBOutlet weak var passwordTextField: RoundedTextField!
     @IBOutlet weak var signinButton: UIButton!
+    
+    public var signIn: ((SigninViewModel) -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -14,7 +18,12 @@ public final class SigninViewController: UIViewController, Storyboarded {
     private func configure() {
         title = "IDevs"
         signinButton.layer.cornerRadius = 5
+        signinButton?.addTarget(self, action: #selector(signinButtonTapped), for: .touchUpInside)
         hideKeyboardOnTap()
+    }
+    
+    @objc private func signinButtonTapped() {
+        signIn?(SigninViewModel(email: emailTextField.text, password: passwordTextField.text))
     }
 }
 
