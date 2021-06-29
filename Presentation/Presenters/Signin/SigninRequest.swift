@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public struct SigninViewModel: Model {
+public struct SigninRequest: Model {
     public var email: String?
     public var password: String?
     

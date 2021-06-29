@@ -8,7 +8,7 @@ public final class SigninViewController: UIViewController, Storyboarded {
     @IBOutlet weak var passwordTextField: RoundedTextField!
     @IBOutlet weak var signinButton: UIButton!
     
-    public var signIn: ((SigninViewModel) -> Void)?
+    public var signIn: ((SigninRequest) -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ public final class SigninViewController: UIViewController, Storyboarded {
     }
     
     @objc private func signinButtonTapped() {
-        signIn?(SigninViewModel(email: emailTextField.text, password: passwordTextField.text))
+        signIn?(SigninRequest(email: emailTextField.text, password: passwordTextField.text))
     }
 }
 

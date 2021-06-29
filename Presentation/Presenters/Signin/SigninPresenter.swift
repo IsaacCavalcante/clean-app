@@ -14,7 +14,7 @@ public final class SigninPresenter {
         self.loadingView = loadingView
     }
     
-    public func signIn(viewModel: SigninViewModel) {
+    public func signIn(viewModel: SigninRequest) {
         if let message = validation.validate(data: viewModel.toJson()) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message))
         } else {

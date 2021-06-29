@@ -68,7 +68,7 @@
 		94873B94268A0BD40008F99C /* RemoteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B93268A0BD40008F99C /* RemoteAuthentication.swift */; };
 		94873B99268A19940008F99C /* SigninPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B98268A19940008F99C /* SigninPresenterTests.swift */; };
 		94873B9B268A1AB90008F99C /* SigninPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B9A268A1AB90008F99C /* SigninPresenter.swift */; };
-		94873B9D268A1B130008F99C /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B9C268A1B130008F99C /* SigninViewModel.swift */; };
+		94873B9D268A1B130008F99C /* SigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B9C268A1B130008F99C /* SigninRequest.swift */; };
 		94873B9F268A30970008F99C /* AuthenticationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873B9E268A30970008F99C /* AuthenticationSpy.swift */; };
 		94873BA2268A4C2F0008F99C /* SigninStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94873BA1268A4C2F0008F99C /* SigninStoryboard.storyboard */; };
 		94873BA5268A4CF50008F99C /* SigninViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94873BA4268A4CF50008F99C /* SigninViewControllerTests.swift */; };
@@ -419,7 +419,7 @@
 		94873B93268A0BD40008F99C /* RemoteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAuthentication.swift; sourceTree = "<group>"; };
 		94873B98268A19940008F99C /* SigninPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninPresenterTests.swift; sourceTree = "<group>"; };
 		94873B9A268A1AB90008F99C /* SigninPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninPresenter.swift; sourceTree = "<group>"; };
-		94873B9C268A1B130008F99C /* SigninViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		94873B9C268A1B130008F99C /* SigninRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninRequest.swift; sourceTree = "<group>"; };
 		94873B9E268A30970008F99C /* AuthenticationSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSpy.swift; sourceTree = "<group>"; };
 		94873BA1268A4C2F0008F99C /* SigninStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SigninStoryboard.storyboard; sourceTree = "<group>"; };
 		94873BA4268A4CF50008F99C /* SigninViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewControllerTests.swift; sourceTree = "<group>"; };
@@ -998,7 +998,7 @@
 			isa = PBXGroup;
 			children = (
 				94873B9A268A1AB90008F99C /* SigninPresenter.swift */,
-				94873B9C268A1B130008F99C /* SigninViewModel.swift */,
+				94873B9C268A1B130008F99C /* SigninRequest.swift */,
 			);
 			path = Signin;
 			sourceTree = "<group>";
@@ -1805,7 +1805,7 @@
 				948EBE3E2672893F00267893 /* SignupPresenter.swift in Sources */,
 				9421344A2673CB1A00119EB0 /* SignupViewModel.swift in Sources */,
 				94873B9B268A1AB90008F99C /* SigninPresenter.swift in Sources */,
-				94873B9D268A1B130008F99C /* SigninViewModel.swift in Sources */,
+				94873B9D268A1B130008F99C /* SigninRequest.swift in Sources */,
 				942134472673B31100119EB0 /* LoadingView.swift in Sources */,
 				948EBE4826728BF000267893 /* AlertView.swift in Sources */,
 				941F23E426821A26001B82FF /* Validation.swift in Sources */,

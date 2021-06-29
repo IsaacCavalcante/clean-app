@@ -21,7 +21,7 @@ class SignupViewControllerTests: XCTestCase {
     }
     
     func test_sut_save_button_calls_signup_on_tap() {
-        var signupViewModel: SignupViewModel?
+        var signupViewModel: SignupRequest?
         let sut = makeSut() { signupViewModel = $0 }
         sut.loadViewIfNeeded()
         sut.signupButton?.simulateTap()
@@ -29,7 +29,7 @@ class SignupViewControllerTests: XCTestCase {
         let email = sut.emailTextField?.text
         let password = sut.passwordTextField?.text
         let passwordConfirmation = sut.passwordConfirmationTextField?.text
-        XCTAssertEqual(signupViewModel, SignupViewModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation))
+        XCTAssertEqual(signupViewModel, SignupRequest(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation))
     }
     
     func test_sut_should_animate_display_when_display_method_is_called() {
@@ -66,7 +66,7 @@ class SignupViewControllerTests: XCTestCase {
 }
 
 extension SignupViewControllerTests {
-    func makeSut(signupModel: ((SignupViewModel) -> Void)? = nil) -> SignupViewController {
+    func makeSut(signupModel: ((SignupRequest) -> Void)? = nil) -> SignupViewController {
         let sut = SignupViewController.instantiate()
         sut.signUp = signupModel
         sut.loadViewIfNeeded()
