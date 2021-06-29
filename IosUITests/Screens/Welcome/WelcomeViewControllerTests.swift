@@ -1,6 +1,5 @@
 import XCTest
 import UIKit
-import Presentation
 @testable import IosUI
 
 class WelcomeViewControllerTests: XCTestCase {
