@@ -91,6 +91,7 @@
 		94A748212673F2F70066AC0A /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 946CC7DC267153C100D42FDD /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94A748272673F7600066AC0A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A748262673F7600066AC0A /* SignupViewController.swift */; };
 		94A7482A2673F8320066AC0A /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A748292673F8320066AC0A /* SignupStoryboard.storyboard */; };
+		94B5E817268B3C3300F8DDBB /* WelcomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94B5E816268B3C3300F8DDBB /* WelcomeStoryboard.storyboard */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
 		94CAAC4C2679303800F3FB73 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CAAC4B2679303800F3FB73 /* Environment.swift */; };
@@ -435,6 +436,7 @@
 		94A748182673F0590066AC0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94A748262673F7600066AC0A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		94A748292673F8320066AC0A /* SignupStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignupStoryboard.storyboard; sourceTree = "<group>"; };
+		94B5E816268B3C3300F8DDBB /* WelcomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeStoryboard.storyboard; sourceTree = "<group>"; };
 		94C358732670DD520023D955 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		94C358772670E1210023D955 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		94CAAC4926792E2200F3FB73 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -910,6 +912,7 @@
 		9475039D26779E9B00E796C4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				94B5E815268B3BCD00F8DDBB /* Welcome */,
 				94873BA0268A4C0C0008F99C /* Signin */,
 				94A748252673F7280066AC0A /* Signup */,
 			);
@@ -1092,6 +1095,14 @@
 				94A748292673F8320066AC0A /* SignupStoryboard.storyboard */,
 			);
 			path = Signup;
+			sourceTree = "<group>";
+		};
+		94B5E815268B3BCD00F8DDBB /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				94B5E816268B3C3300F8DDBB /* WelcomeStoryboard.storyboard */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 		94C358752670E0360023D955 /* Http */ = {
@@ -1705,6 +1716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B5E817268B3C3300F8DDBB /* WelcomeStoryboard.storyboard in Resources */,
 				94A7482A2673F8320066AC0A /* SignupStoryboard.storyboard in Resources */,
 				94873B852689ED090008F99C /* Images.xcassets in Resources */,
 				94873BA2268A4C2F0008F99C /* SigninStoryboard.storyboard in Resources */,
