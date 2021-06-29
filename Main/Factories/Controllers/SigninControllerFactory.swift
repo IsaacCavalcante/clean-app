@@ -17,7 +17,6 @@ public func makeSigninControllerWith(authentication: Authentication) -> SigninVi
 }
 
 public func makeSigninValidations() -> [Validation] {
-    return [RequiredFieldsValidation(fieldName: "email", fieldLabel: "Email"),
-            EmailValidation(fieldName: "email", fieldLabel: "Email", emailValidator: makeEmailValidatorAdapter()),
-            RequiredFieldsValidation(fieldName: "password", fieldLabel: "Senha")]
+    return ValidationBuilder.field("email").label("Email").required().email().build() +
+        ValidationBuilder.field("password").label("Senha").required().build()
 }

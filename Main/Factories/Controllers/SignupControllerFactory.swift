@@ -18,10 +18,9 @@ public func makeSignupControllerWith(addAccount: AddAccount) -> SignupViewContro
 }
 
 public func makeSignupValidations() -> [Validation] {
-    return [RequiredFieldsValidation(fieldName: "name", fieldLabel: "Nome"),
-            RequiredFieldsValidation(fieldName: "email", fieldLabel: "Email"),
-            EmailValidation(fieldName: "email", fieldLabel: "Email", emailValidator: makeEmailValidatorAdapter()),
-            RequiredFieldsValidation(fieldName: "password", fieldLabel: "Senha"),
-            RequiredFieldsValidation(fieldName: "passwordConfirmation", fieldLabel: "Confirmar Senha"),
-            CompareFieldsValidation(fieldName: "password", fieldNameToCompare: "passwordConfirmation", fieldLabel: "Confirmar Senha")]
+    return ValidationBuilder.field("name").label("Nome").required().build() +
+        ValidationBuilder.field("email").label("Email").required().email().build() +
+        ValidationBuilder.field("password").label("Senha").required().build() +
+        ValidationBuilder.field("passwordConfirmation").label("Confirmar Senha").required().build() +
+        ValidationBuilder.field("password").label("Confirmar Senha").sameAs("passwordConfirmation").build()
 }
