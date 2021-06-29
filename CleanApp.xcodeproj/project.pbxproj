@@ -92,6 +92,8 @@
 		94A748272673F7600066AC0A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A748262673F7600066AC0A /* SignupViewController.swift */; };
 		94A7482A2673F8320066AC0A /* SignupStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A748292673F8320066AC0A /* SignupStoryboard.storyboard */; };
 		94B5E817268B3C3300F8DDBB /* WelcomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94B5E816268B3C3300F8DDBB /* WelcomeStoryboard.storyboard */; };
+		94B5E81A268B3F8700F8DDBB /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5E819268B3F8700F8DDBB /* WelcomeViewControllerTests.swift */; };
+		94B5E81C268B418000F8DDBB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5E81B268B418000F8DDBB /* WelcomeViewController.swift */; };
 		94C358742670DD520023D955 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358732670DD520023D955 /* AlamofireAdapter.swift */; };
 		94C358782670E1210023D955 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C358772670E1210023D955 /* URLProtocolStub.swift */; };
 		94CAAC4C2679303800F3FB73 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CAAC4B2679303800F3FB73 /* Environment.swift */; };
@@ -437,6 +439,8 @@
 		94A748262673F7600066AC0A /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		94A748292673F8320066AC0A /* SignupStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignupStoryboard.storyboard; sourceTree = "<group>"; };
 		94B5E816268B3C3300F8DDBB /* WelcomeStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeStoryboard.storyboard; sourceTree = "<group>"; };
+		94B5E819268B3F8700F8DDBB /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
+		94B5E81B268B418000F8DDBB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		94C358732670DD520023D955 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		94C358772670E1210023D955 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		94CAAC4926792E2200F3FB73 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -930,6 +934,7 @@
 		9475039F26779EB300E796C4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				94B5E818268B3F7700F8DDBB /* Welcome */,
 				94873BA3268A4CD90008F99C /* Signin */,
 				9475039E26779EA500E796C4 /* Signup */,
 			);
@@ -1101,6 +1106,15 @@
 			isa = PBXGroup;
 			children = (
 				94B5E816268B3C3300F8DDBB /* WelcomeStoryboard.storyboard */,
+				94B5E81B268B418000F8DDBB /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		94B5E818268B3F7700F8DDBB /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				94B5E819268B3F8700F8DDBB /* WelcomeViewControllerTests.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -1865,6 +1879,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B5E81C268B418000F8DDBB /* WelcomeViewController.swift in Sources */,
 				947503A62677A5A300E796C4 /* UIViewControllerExtension.swift in Sources */,
 				94873B8C2689FDA20008F99C /* RoundedTextField.swift in Sources */,
 				94A748272673F7600066AC0A /* SignupViewController.swift in Sources */,
@@ -1882,6 +1897,7 @@
 			files = (
 				94873BA8268A55690008F99C /* XCTestCaseExtension.swift in Sources */,
 				947503A226779FE100E796C4 /* TestExtensions.swift in Sources */,
+				94B5E81A268B3F8700F8DDBB /* WelcomeViewControllerTests.swift in Sources */,
 				94873BA5268A4CF50008F99C /* SigninViewControllerTests.swift in Sources */,
 				94A748172673F0590066AC0A /* SignupViewControllerTests.swift in Sources */,
 			);
