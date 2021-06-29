@@ -6,21 +6,32 @@ import Presentation
 class WelcomeViewControllerTests: XCTestCase {
     
     func test_sut_signin_button_calls_sigin_on_tap() {
-        let (sut, buttonSpy) = makeSut()
-        sut.loadViewIfNeeded()
+        let sut = makeSut()
+        let buttonSignInSpy = ButtonSpy()
+        sut.signIn = buttonSignInSpy.onClicks
+        
         sut.signinButton?.simulateTap()
         
-        XCTAssertEqual(buttonSpy.clicks, 1)
+        XCTAssertEqual(buttonSignInSpy.clicks, 1)
+    }
+    
+    func test_sut_signuo_button_calls_sigup_on_tap() {
+        let sut = makeSut()
+        
+        let buttonSignUpSpy = ButtonSpy()
+        sut.signUp = buttonSignUpSpy.onClicks
+        
+        sut.signupButton?.simulateTap()
+        
+        XCTAssertEqual(buttonSignUpSpy.clicks, 1)
     }
 }
 
 extension WelcomeViewControllerTests {
-    func makeSut() -> (sut: WelcomeViewController, buttonSpy: ButtonSpy) {
-        let buttonSpy = ButtonSpy()
+    func makeSut() -> WelcomeViewController {
         let sut = WelcomeViewController.instantiate()
-        sut.signIn = buttonSpy.onClicks
-        
-        return (sut, buttonSpy)
+        sut.loadViewIfNeeded()
+        return sut
     }
     
     class ButtonSpy {

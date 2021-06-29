@@ -7,6 +7,7 @@ public final class WelcomeViewController: UIViewController, Storyboarded {
     
     
     public var signIn: (() -> Void)?
+    public var signUp: (() -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,10 +18,17 @@ public final class WelcomeViewController: UIViewController, Storyboarded {
         title = "IDevs"
         signinButton.layer.cornerRadius = 5
         signinButton?.addTarget(self, action: #selector(signinButtonTapped), for: .touchUpInside)
-        hideKeyboardOnTap()
+        
+        signupButton.layer.cornerRadius = 5
+        signupButton?.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+
     }
     
     @objc private func signinButtonTapped() {
         signIn?()
+    }
+    
+    @objc private func signupButtonTapped() {
+        signUp?()
     }
 }
