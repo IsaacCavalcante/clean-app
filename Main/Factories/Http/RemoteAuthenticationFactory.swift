@@ -2,7 +2,11 @@ import Foundation
 import Domain
 import Data
 
-func makeRemoteAuthentication(httpClient: HttpPostClient) -> Authentication {
+func makeRemoteAuthentication() -> Authentication {
+    return makeRemoteAuthenticationWith(httpClient: makeAlamofireAdapter())
+}
+
+func makeRemoteAuthenticationWith(httpClient: HttpPostClient) -> Authentication {
     let url = makeApiUrl(path: "login")
     let remoteAddAccount = RemoteAuthentication(url: url, httpClient: httpClient)
     

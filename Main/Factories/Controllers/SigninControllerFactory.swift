@@ -4,7 +4,11 @@ import Validation
 import Presentation
 import IosUI
 
-public func makeSigninController(authentication: Authentication) -> SigninViewController {
+public func makeSigninController() -> SigninViewController {
+    return makeSigninControllerWith(authentication: makeRemoteAuthentication())
+}
+
+public func makeSigninControllerWith(authentication: Authentication) -> SigninViewController {
     let controller = SigninViewController.instantiate()
     let validateComposite = ValidationComposite(validations: makeSigninValidations())
     let presenter = SigninPresenter(alertView: WeakVarProxy(controller), validation: validateComposite, authentication: authentication, loadingView: WeakVarProxy(controller))

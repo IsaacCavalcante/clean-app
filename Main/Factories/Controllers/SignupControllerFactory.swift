@@ -4,7 +4,11 @@ import Validation
 import Presentation
 import IosUI
 
-public func makeSignupController(addAccount: AddAccount) -> SignupViewController {
+public func makeSignupController() -> SignupViewController {
+    return makeSignupControllerWith(addAccount: makeRemoteAddAccount())
+}
+
+public func makeSignupControllerWith(addAccount: AddAccount) -> SignupViewController {
     let controller = SignupViewController.instantiate()
     let validateComposite = ValidationComposite(validations: makeSignupValidations())
     
